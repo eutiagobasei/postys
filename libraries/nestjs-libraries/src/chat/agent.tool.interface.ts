@@ -1,16 +1,7 @@
-import type { ZodLikeSchema } from '@mastra/core/dist/types/zod-compat';
-import type {
-  ToolExecutionContext,
-} from '@mastra/core/dist/tools/types';
-import { Tool } from '@mastra/core/dist/tools/tool';
+import { Tool } from '@mastra/core/tools';
 
-export type ToolReturn = Tool<
-  ZodLikeSchema,
-  ZodLikeSchema,
-  ZodLikeSchema,
-  ZodLikeSchema,
-  ToolExecutionContext<ZodLikeSchema, ZodLikeSchema, ZodLikeSchema>
->;
+// Generic Tool type that accepts any schema types
+export type ToolReturn = Tool<any, any, any, any, any, any, any>;
 
 export interface AgentToolInterface {
   name: string;

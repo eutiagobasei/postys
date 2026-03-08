@@ -1,13 +1,13 @@
 'use client';
 
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
 import { Integration } from '@prisma/client';
 import { Autocomplete } from '@mantine/core';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Button } from '@gitroom/react/form/button';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { Button } from '@postys/react/form/button';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 export const CustomerModal: FC<{
   integration: Integration & {
     customer?: {

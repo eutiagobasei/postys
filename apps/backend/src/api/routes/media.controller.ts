@@ -13,18 +13,18 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { GetOrgFromRequest } from '@gitroom/nestjs-libraries/user/org.from.request';
+import { GetOrgFromRequest } from '@postys/nestjs-libraries/user/org.from.request';
 import { Organization } from '@prisma/client';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
+import { MediaService } from '@postys/nestjs-libraries/database/prisma/media/media.service';
 import { ApiTags } from '@nestjs/swagger';
-import handleR2Upload from '@gitroom/nestjs-libraries/upload/r2.uploader';
+import handleR2Upload from '@postys/nestjs-libraries/upload/r2.uploader';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { CustomFileValidationPipe } from '@gitroom/nestjs-libraries/upload/custom.upload.validation';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { UploadFactory } from '@gitroom/nestjs-libraries/upload/upload.factory';
-import { SaveMediaInformationDto } from '@gitroom/nestjs-libraries/dtos/media/save.media.information.dto';
-import { VideoDto } from '@gitroom/nestjs-libraries/dtos/videos/video.dto';
-import { VideoFunctionDto } from '@gitroom/nestjs-libraries/dtos/videos/video.function.dto';
+import { CustomFileValidationPipe } from '@postys/nestjs-libraries/upload/custom.upload.validation';
+import { SubscriptionService } from '@postys/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { UploadFactory } from '@postys/nestjs-libraries/upload/upload.factory';
+import { SaveMediaInformationDto } from '@postys/nestjs-libraries/dtos/media/save.media.information.dto';
+import { VideoDto } from '@postys/nestjs-libraries/dtos/videos/video.dto';
+import { VideoFunctionDto } from '@postys/nestjs-libraries/dtos/videos/video.function.dto';
 
 @ApiTags('Media')
 @Controller('/media')

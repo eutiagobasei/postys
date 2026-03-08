@@ -7,16 +7,16 @@ import {
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { TikTokDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { Select } from '@gitroom/react/form/select';
-import { Checkbox } from '@gitroom/react/form/checkbox';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
+import { TikTokDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/tiktok.dto';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { Select } from '@postys/react/form/select';
+import { Checkbox } from '@postys/react/form/checkbox';
 import clsx from 'clsx';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
-import { Input } from '@gitroom/react/form/input';
-import { TiktokPreview } from '@gitroom/frontend/components/new-launch/providers/tiktok/tiktok.preview';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { useIntegration } from '@postys/frontend/components/launches/helpers/use.integration';
+import { Input } from '@postys/react/form/input';
+import { TiktokPreview } from '@postys/frontend/components/new-launch/providers/tiktok/tiktok.preview';
 
 const TikTokSettings: FC<{
   values?: any;

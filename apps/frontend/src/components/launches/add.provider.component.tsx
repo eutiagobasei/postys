@@ -1,21 +1,21 @@
 'use client';
 
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
 import React, { FC, useCallback, useMemo } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Input } from '@gitroom/react/form/input';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { Input } from '@postys/react/form/input';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postys/react/form/button';
 import { classValidatorResolver } from '@hookform/resolvers/class-validator';
-import { ApiKeyDto } from '@gitroom/nestjs-libraries/dtos/integrations/api.key.dto';
+import { ApiKeyDto } from '@postys/nestjs-libraries/dtos/integrations/api.key.dto';
 import { useRouter } from 'next/navigation';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { TopTitle } from '@postys/frontend/components/launches/helpers/top.title.component';
+import { useVariables } from '@postys/react/helpers/variable.context';
+import { useToaster } from '@postys/react/toaster/toaster';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { web3List } from '@gitroom/frontend/components/launches/web3/web3.list';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { web3List } from '@postys/frontend/components/launches/web3/web3.list';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 import clsx from 'clsx';
 import copy from 'copy-to-clipboard';
 import { capitalize } from 'lodash';
@@ -259,7 +259,7 @@ const ExtensionNotFound: FC = () => {
       <p className="text-[14px] text-textColor/80">
         {t(
           'extension_not_available',
-          'The Postiz browser extension is not installed. You need to install it before connecting this channel.'
+          'The Postys browser extension is not installed. You need to install it before connecting this channel.'
         )}
       </p>
       <div className="flex gap-[10px]">
@@ -268,7 +268,7 @@ const ExtensionNotFound: FC = () => {
           className="flex-1"
           onClick={() => {
             window.open(
-              'https://chromewebstore.google.com/detail/postiz/cidhffagahknaeodkplfbcpfeielnkjl?hl=en',
+              'https://chromewebstore.google.com/detail/postys/cidhffagahknaeodkplfbcpfeielnkjl?hl=en',
               '_blank'
             );
             modals.closeCurrent();
@@ -325,7 +325,7 @@ const ChromeExtensionWarning: FC<{
           We will store your cookies securely to facilitate the connection.
         </li>
         <li>
-          Postiz does not take responsibility for any issues arising or account termination due to the use of this method.
+          Postys does not take responsibility for any issues arising or account termination due to the use of this method.
         </li>
       </ul>
       <div className="flex gap-[10px] mt-[8px]">
@@ -520,7 +520,7 @@ export const AddProviderComponent: FC<{
             toaster.show(
               t(
                 'extension_not_installed',
-                'Postiz browser extension is not installed or not reachable.'
+                'Postys browser extension is not installed or not reachable.'
               ),
               'warning'
             );

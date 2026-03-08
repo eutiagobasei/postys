@@ -5,7 +5,7 @@ import {
   RawBodyRequest,
   Req,
 } from '@nestjs/common';
-import { StripeService } from '@gitroom/nestjs-libraries/services/stripe.service';
+import { StripeService } from '@postys/nestjs-libraries/services/stripe.service';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Stripe')
@@ -28,7 +28,7 @@ export class StripeController {
     if (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      event?.data?.object?.metadata?.service !== 'gitroom' &&
+      event?.data?.object?.metadata?.service !== 'postys' &&
       event.type !== 'invoice.payment_succeeded'
     ) {
       return { ok: true };

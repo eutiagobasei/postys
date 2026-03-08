@@ -5,8 +5,8 @@ import {
   setHandler,
   sleep,
 } from '@temporalio/workflow';
-import { Email, emailSignal } from '@gitroom/orchestrator/signals/email.signal';
-import { EmailActivity } from '@gitroom/orchestrator/activities/email.activity';
+import { Email, emailSignal } from '@postys/orchestrator/signals/email.signal';
+import { EmailActivity } from '@postys/orchestrator/activities/email.activity';
 
 const { getUserOrgs, sendEmailAsync } = proxyActivities<EmailActivity>({
   startToCloseTimeout: '10 minute',
@@ -57,7 +57,7 @@ export async function digestEmailWorkflow({
         user.user.email,
         toSend.length === 1
           ? toSend[0].title
-          : `[Postiz] Your latest notifications`,
+          : `[Postys] Your latest notifications`,
         toSend.map((p) => p.message).join('<br/>'),
         'bottom'
       );

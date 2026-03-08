@@ -1,9 +1,9 @@
-import { MediaLayoutComponent } from '@gitroom/frontend/components/new-layout/layout.media.component';
+import { MediaLayoutComponent } from '@postys/frontend/components/new-layout/layout.media.component';
 import { Metadata } from 'next';
-import { isGeneralServerSide } from '@gitroom/helpers/utils/is.general.server.side';
+import { isGeneralServerSide } from '@postys/helpers/utils/is.general.server.side';
 
 export const metadata: Metadata = {
-  title: `${isGeneralServerSide() ? 'Postiz' : 'Gitroom'} Media`,
+  title: `${isGeneralServerSide() ? 'Postys' : 'Postys'} Media`,
   description: '',
 };
 

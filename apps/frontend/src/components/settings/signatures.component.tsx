@@ -1,18 +1,18 @@
 import React, { FC, Fragment, useCallback } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
 import useSWR from 'swr';
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postys/react/form/button';
 import clsx from 'clsx';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
+import { TopTitle } from '@postys/frontend/components/launches/helpers/top.title.component';
 import { array, boolean, object, string } from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { CopilotTextarea } from '@copilotkit/react-textarea';
-import { Select } from '@gitroom/react/form/select';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
+import { Select } from '@postys/react/form/select';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { deleteDialog } from '@postys/react/helpers/delete.dialog';
 export const SignaturesComponent: FC<{
   appendSignature?: (value: string) => void;
 }> = (props) => {

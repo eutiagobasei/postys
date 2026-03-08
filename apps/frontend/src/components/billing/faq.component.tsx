@@ -2,9 +2,9 @@
 
 import { FC, useCallback, useState } from 'react';
 import clsx from 'clsx';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useVariables } from '@postys/react/helpers/variable.context';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 const useFaqList = () => {
   const { isGeneral } = useVariables();
   const user = useUser();
@@ -14,36 +14,36 @@ const useFaqList = () => {
       ? [
           {
             title: t(
-              'faq_am_i_going_to_be_charged_by_postiz',
-              'Am I going to be charged by Postiz?'
+              'faq_am_i_going_to_be_charged_by_postys',
+              'Am I going to be charged by Postys?'
             ),
             description: t(
-              'faq_to_confirm_credit_card_information_postiz_will_hold',
-              'To confirm credit card information Postiz will hold $2 and release it immediately, you can cancel your subscription anytime from settings without talking to a person'
+              'faq_to_confirm_credit_card_information_postys_will_hold',
+              'To confirm credit card information Postys will hold $2 and release it immediately, you can cancel your subscription anytime from settings without talking to a person'
             ),
           },
         ]
       : []),
     {
       title: t(
-        'faq_can_i_trust_postiz_gitroom',
-        `Can I trust ${isGeneral ? 'Postiz' : 'Gitroom'}?`
+        'faq_can_i_trust_postys_postys',
+        `Can I trust ${isGeneral ? 'Postys' : 'Postys'}?`
       ),
       description: t(
-        'faq_postiz_gitroom_is_proudly_open_source',
+        'faq_postys_postys_is_proudly_open_source',
         `${
-          isGeneral ? 'Postiz' : 'Gitroom'
+          isGeneral ? 'Postys' : 'Postys'
         } is proudly open-source! We believe in an ethical and transparent culture, meaning that ${
-          isGeneral ? 'Postiz' : 'Gitroom'
-        } will live forever. You can check out the entire code or use it for personal projects. To view the open-source repository, <a href="https://github.com/gitroomhq/postiz-app" target="_blank" style="text-decoration: underline;">click here</a>.`
+          isGeneral ? 'Postys' : 'Postys'
+        } will live forever. You can check out the entire code or use it for personal projects. To view the open-source repository, <a href="https://github.com/postyshq/postys-app" target="_blank" style="text-decoration: underline;">click here</a>.`
       ),
     },
     {
       title: t('faq_what_are_channels', 'What are channels?'),
       description: t(
-        'faq_postiz_gitroom_allows_you_to_schedule_posts',
+        'faq_postys_postys_allows_you_to_schedule_posts',
         `${
-          isGeneral ? 'Postiz' : 'Gitroom'
+          isGeneral ? 'Postys' : 'Postys'
         } allows you to schedule your posts between different channels.
 A channel is a publishing platform where you can schedule your posts.
 For example, you can schedule your posts on X, Facebook, Instagram, TikTok, YouTube, Reddit, Linkedin, Dribbble, Threads and Pinterest.`

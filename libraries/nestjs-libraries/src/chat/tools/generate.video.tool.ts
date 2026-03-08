@@ -1,18 +1,18 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postys/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
 import {
   IntegrationManager,
   socialIntegrationList,
-} from '@gitroom/nestjs-libraries/integrations/integration.manager';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
-import { RefreshToken } from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { VideoManager } from '@gitroom/nestjs-libraries/videos/video.manager';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
+} from '@postys/nestjs-libraries/integrations/integration.manager';
+import { IntegrationService } from '@postys/nestjs-libraries/database/prisma/integrations/integration.service';
+import { RefreshToken } from '@postys/nestjs-libraries/integrations/social.abstract';
+import { timer } from '@postys/helpers/utils/timer';
+import { MediaService } from '@postys/nestjs-libraries/database/prisma/media/media.service';
+import { OrganizationService } from '@postys/nestjs-libraries/database/prisma/organizations/organization.service';
+import { VideoManager } from '@postys/nestjs-libraries/videos/video.manager';
+import { checkAuth } from '@postys/nestjs-libraries/chat/auth.context';
 
 @Injectable()
 export class GenerateVideoTool implements AgentToolInterface {
@@ -48,15 +48,13 @@ export class GenerateVideoTool implements AgentToolInterface {
       outputSchema: z.object({
         url: z.string(),
       }),
-      execute: async (args, options) => {
-        const { context, runtimeContext } = args;
-        checkAuth(args, options);
-        // @ts-ignore
-        const org = JSON.parse(runtimeContext.get('organization') as string);
+      execute: async (inputData, context) => {
+        checkAuth(inputData, context);
+        const org = JSON.parse((context.requestContext as any)?.get('organization') || '{}');
         const value = await this._mediaService.generateVideo(org, {
-          type: context.identifier,
-          output: context.output,
-          customParams: context.customParams.reduce(
+          type: inputData.identifier,
+          output: inputData.output,
+          customParams: inputData.customParams.reduce(
             (all, current) => ({
               ...all,
               [current.key]: current.value,

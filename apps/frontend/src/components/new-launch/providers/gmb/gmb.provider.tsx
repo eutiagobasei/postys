@@ -4,11 +4,11 @@ import { FC, useCallback, useEffect } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { GmbSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/gmb.settings.dto';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { Input } from '@gitroom/react/form/input';
-import { Select } from '@gitroom/react/form/select';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
+import { GmbSettingsDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/gmb.settings.dto';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { Input } from '@postys/react/form/input';
+import { Select } from '@postys/react/form/select';
 import { useWatch } from 'react-hook-form';
 
 const topicTypes = [

@@ -1,10 +1,10 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postys/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { MediaService } from '@gitroom/nestjs-libraries/database/prisma/media/media.service';
-import { UploadFactory } from '@gitroom/nestjs-libraries/upload/upload.factory';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
+import { MediaService } from '@postys/nestjs-libraries/database/prisma/media/media.service';
+import { UploadFactory } from '@postys/nestjs-libraries/upload/upload.factory';
+import { checkAuth } from '@postys/nestjs-libraries/chat/auth.context';
 
 @Injectable()
 export class GenerateImageTool implements AgentToolInterface {
@@ -27,13 +27,11 @@ export class GenerateImageTool implements AgentToolInterface {
         id: z.string(),
         path: z.string(),
       }),
-      execute: async (args, options) => {
-        const { context, runtimeContext } = args;
-        checkAuth(args, options);
-        // @ts-ignore
-        const org = JSON.parse(runtimeContext.get('organization') as string);
+      execute: async (inputData, context) => {
+        checkAuth(inputData, context);
+        const org = JSON.parse((context.requestContext as any)?.get('organization') || '{}');
         const image = await this._mediaService.generateImage(
-          context.prompt,
+          inputData.prompt,
           org
         );
 

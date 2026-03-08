@@ -4,14 +4,14 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { LinkedinProvider } from '@gitroom/nestjs-libraries/integrations/social/linkedin.provider';
+} from '@postys/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeId } from '@postys/nestjs-libraries/services/make.is';
+import { LinkedinProvider } from '@postys/nestjs-libraries/integrations/social/linkedin.provider';
 import dayjs from 'dayjs';
 import { Integration } from '@prisma/client';
-import { Plug } from '@gitroom/helpers/decorators/plug.decorator';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
+import { Plug } from '@postys/helpers/decorators/plug.decorator';
+import { timer } from '@postys/helpers/utils/timer';
+import { Rules } from '@postys/nestjs-libraries/chat/rules.description.decorator';
 
 @Rules(
   'LinkedIn can have maximum one attachment when selecting video, when choosing a carousel on LinkedIn minimum amount of attachment must be two, and only pictures, if uploading a video, LinkedIn can have only one attachment'
@@ -28,11 +28,8 @@ export class LinkedinPageProvider
   override scopes = [
     'openid',
     'profile',
+    'email',
     'w_member_social',
-    'r_basicprofile',
-    'rw_organization_admin',
-    'w_organization_social',
-    'r_organization_social',
   ];
 
   override editor = 'normal' as const;

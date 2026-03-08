@@ -3,11 +3,11 @@
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { FacebookDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/facebook.dto';
-import { Input } from '@gitroom/react/form/input';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { FacebookPreview } from '@gitroom/frontend/components/new-launch/providers/facebook/facebook.preview';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
+import { FacebookDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/facebook.dto';
+import { Input } from '@postys/react/form/input';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { FacebookPreview } from '@postys/frontend/components/new-launch/providers/facebook/facebook.preview';
 
 export const FacebookSettings = () => {
   const { register } = useSettings();

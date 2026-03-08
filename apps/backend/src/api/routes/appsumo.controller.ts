@@ -5,7 +5,7 @@ import {
   RawBodyRequest,
   Req,
 } from '@nestjs/common';
-import { AppSumoService } from '@gitroom/nestjs-libraries/services/appsumo.service';
+import { AppSumoService } from '@postys/nestjs-libraries/services/appsumo.service';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('AppSumo')

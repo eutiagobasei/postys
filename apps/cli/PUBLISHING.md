@@ -1,6 +1,6 @@
-# Publishing the Postiz CLI to npm
+# Publishing the Postys CLI to npm
 
-## Quick Publish (Current Name: "postiz")
+## Quick Publish (Current Name: "postys")
 
 ```bash
 # From apps/cli directory
@@ -10,17 +10,17 @@ pnpm publish --access public
 
 Then users can install:
 ```bash
-npm install -g postiz
+npm install -g postys
 # or
-pnpm install -g postiz
+pnpm install -g postys
 
 # And use:
-postiz --help
+postys --help
 ```
 
 ## Publishing with a Different Package Name
 
-If you want to publish as a different npm package name (e.g., "agent-postiz"):
+If you want to publish as a different npm package name (e.g., "agent-postys"):
 
 ### 1. Change Package Name
 
@@ -28,10 +28,10 @@ Edit `apps/cli/package.json`:
 
 ```json
 {
-  "name": "agent-postiz",  // ← Changed package name
+  "name": "agent-postys",  // ← Changed package name
   "version": "1.0.0",
   "bin": {
-    "postiz": "./dist/index.js"  // ← Keep command name!
+    "postys": "./dist/index.js"  // ← Keep command name!
   }
 }
 ```
@@ -49,55 +49,55 @@ pnpm publish --access public
 ### 3. Users Install
 
 ```bash
-npm install -g agent-postiz
+npm install -g agent-postys
 # or
-pnpm install -g agent-postiz
+pnpm install -g agent-postys
 ```
 
 ### 4. Users Use
 
-Even though the package is called "agent-postiz", the command is still:
+Even though the package is called "agent-postys", the command is still:
 
 ```bash
-postiz --help  # ← Command name from "bin" field
-postiz posts:create -c "Hello!" -i "twitter-123"
+postys --help  # ← Command name from "bin" field
+postys posts:create -c "Hello!" -i "twitter-123"
 ```
 
 ## Package Name vs Command Name
 
 | Field | Purpose | Example |
 |-------|---------|---------|
-| `"name"` | npm package name (what you install) | `"agent-postiz"` |
-| `"bin"` | Command name (what you type) | `"postiz"` |
+| `"name"` | npm package name (what you install) | `"agent-postys"` |
+| `"bin"` | Command name (what you type) | `"postys"` |
 
 **Examples:**
 
 1. **Same name:**
    ```json
-   "name": "postiz",
-   "bin": { "postiz": "./dist/index.js" }
+   "name": "postys",
+   "bin": { "postys": "./dist/index.js" }
    ```
-   Install: `npm i -g postiz`
-   Use: `postiz`
+   Install: `npm i -g postys`
+   Use: `postys`
 
 2. **Different names:**
    ```json
-   "name": "agent-postiz",
-   "bin": { "postiz": "./dist/index.js" }
+   "name": "agent-postys",
+   "bin": { "postys": "./dist/index.js" }
    ```
-   Install: `npm i -g agent-postiz`
-   Use: `postiz`
+   Install: `npm i -g agent-postys`
+   Use: `postys`
 
 3. **Multiple commands:**
    ```json
-   "name": "agent-postiz",
+   "name": "agent-postys",
    "bin": {
-     "postiz": "./dist/index.js",
+     "postys": "./dist/index.js",
      "pz": "./dist/index.js"
    }
    ```
-   Install: `npm i -g agent-postiz`
-   Use: `postiz` or `pz`
+   Install: `npm i -g agent-postys`
+   Use: `postys` or `pz`
 
 ## Publishing Checklist
 
@@ -105,7 +105,7 @@ postiz posts:create -c "Hello!" -i "twitter-123"
 
 - [ ] Verify package name is available on npm
   ```bash
-  npm view postiz
+  npm view postys
   # If error "404 Not Found" - name is available!
   ```
 
@@ -131,7 +131,7 @@ postiz posts:create -c "Hello!" -i "twitter-123"
 - [ ] Test locally
   ```bash
   pnpm link --global
-  postiz --help
+  postys --help
   ```
 
 ### Publish to npm
@@ -153,14 +153,14 @@ pnpm run publish-cli
 
 Verify it's published:
 ```bash
-npm view postiz
+npm view postys
 # Should show your package info
 ```
 
 Test installation:
 ```bash
-npm install -g postiz
-postiz --version
+npm install -g postys
+postys --version
 ```
 
 ## Using from Monorepo Root
@@ -214,21 +214,21 @@ If you want to publish under an organization scope:
 
 ```json
 {
-  "name": "@yourorg/postiz",
+  "name": "@yourorg/postys",
   "bin": {
-    "postiz": "./dist/index.js"
+    "postys": "./dist/index.js"
   }
 }
 ```
 
 Install:
 ```bash
-npm install -g @yourorg/postiz
+npm install -g @yourorg/postys
 ```
 
 Use:
 ```bash
-postiz --help
+postys --help
 ```
 
 ## Testing Before Publishing
@@ -244,7 +244,7 @@ node dist/index.js --help
 
 ```bash
 pnpm link --global
-postiz --help
+postys --help
 pnpm unlink --global
 ```
 
@@ -262,9 +262,9 @@ npm pack
 # Creates a .tgz file
 
 # Test installing the tarball
-npm install -g ./postiz-1.0.0.tgz
-postiz --help
-npm uninstall -g postiz
+npm install -g ./postys-1.0.0.tgz
+postys --help
+npm uninstall -g postys
 ```
 
 ## Continuous Publishing
@@ -312,13 +312,13 @@ git push origin cli-v1.0.0
 ### "You do not have permission to publish"
 
 - Make sure you're logged in: `npm login`
-- Check package name isn't taken: `npm view postiz`
+- Check package name isn't taken: `npm view postys`
 - If scoped, ensure org access: `npm org ls yourorg`
 
 ### "Package name too similar to existing package"
 
 - Choose a more unique name
-- Or use a scoped package: `@yourorg/postiz`
+- Or use a scoped package: `@yourorg/postys`
 
 ### "Missing required files"
 
@@ -330,19 +330,19 @@ git push origin cli-v1.0.0
 
 - Check `"bin"` field is correct
 - Ensure `dist/index.js` has shebang: `#!/usr/bin/env node`
-- Try reinstalling: `npm uninstall -g postiz && npm install -g postiz`
+- Try reinstalling: `npm uninstall -g postys && npm install -g postys`
 
 ## Recommended Names
 
-If "postiz" is taken, consider:
+If "postys" is taken, consider:
 
-- `@postiz/cli`
-- `postiz-cli`
-- `postiz-agent`
-- `agent-postiz`
-- `@yourorg/postiz`
+- `@postys/cli`
+- `postys-cli`
+- `postys-agent`
+- `agent-postys`
+- `@yourorg/postys`
 
-Remember: The package name is just for installation. The command can still be `postiz`!
+Remember: The package name is just for installation. The command can still be `postys`!
 
 ## Summary
 
@@ -362,16 +362,16 @@ pnpm publish --access public
 **Users install:**
 
 ```bash
-npm install -g postiz
+npm install -g postys
 # or
-pnpm install -g postiz
+pnpm install -g postys
 ```
 
 **Users use:**
 
 ```bash
-postiz --help
-postiz posts:create -c "Hello!" -i "twitter-123"
+postys --help
+postys posts:create -c "Hello!" -i "twitter-123"
 ```
 
 🚀 **Ready to publish!**

@@ -1,13 +1,13 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postys/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
 import {
   IntegrationManager,
   socialIntegrationList,
-} from '@gitroom/nestjs-libraries/integrations/integration.manager';
-import { getValidationSchemas } from '@gitroom/nestjs-libraries/chat/validation.schemas.helper';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
+} from '@postys/nestjs-libraries/integrations/integration.manager';
+import { getValidationSchemas } from '@postys/nestjs-libraries/chat/validation.schemas.helper';
+import { checkAuth } from '@postys/nestjs-libraries/chat/auth.context';
 
 @Injectable()
 export class IntegrationValidationTool implements AgentToolInterface {
@@ -72,11 +72,10 @@ export class IntegrationValidationTool implements AgentToolInterface {
             ),
         }),
       }),
-      execute: async (args, options) => {
-        const { context, runtimeContext } = args;
-        checkAuth(args, options);
+      execute: async (inputData, context) => {
+        checkAuth(inputData, context);
         const integration = socialIntegrationList.find(
-          (p) => p.identifier === context.platform
+          (p) => p.identifier === inputData.platform
         )!;
 
         if (!integration) {
@@ -85,7 +84,7 @@ export class IntegrationValidationTool implements AgentToolInterface {
           };
         }
 
-        const maxLength = integration.maxLength(context.isPremium);
+        const maxLength = integration.maxLength(inputData.isPremium);
         const schemas = !integration.dto
           ? false
           : getValidationSchemas()[integration.dto.name];

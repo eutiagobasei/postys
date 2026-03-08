@@ -3,14 +3,14 @@
 import { useState, useCallback } from 'react';
 import { useSWRConfig } from 'swr';
 import { useUser } from '../layout/user.context';
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postys/react/form/button';
 import copy from 'copy-to-clipboard';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useDecisionModal } from '@gitroom/frontend/components/layout/new-modal';
-import { DeveloperComponent } from '@gitroom/frontend/components/developer/developer.component';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useVariables } from '@postys/react/helpers/variable.context';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { useDecisionModal } from '@postys/frontend/components/layout/new-modal';
+import { DeveloperComponent } from '@postys/frontend/components/developer/developer.component';
 import clsx from 'clsx';
 
 const PublicApiContent = () => {
@@ -58,13 +58,13 @@ const PublicApiContent = () => {
         <h3 className="text-[20px]">{t('public_api', 'Public API')}</h3>
         <div className="text-customColor18 mt-[4px]">
           {t(
-            'use_postiz_api_to_integrate_with_your_tools',
-            'Use Postiz API to integrate with your tools.'
+            'use_postys_api_to_integrate_with_your_tools',
+            'Use Postys API to integrate with your tools.'
           )}
           <br />
           <a
             className="underline hover:font-bold hover:underline"
-            href="https://docs.postiz.com/public-api"
+            href="https://docs.postys.io/public-api"
             target="_blank"
           >
             {t(
@@ -74,11 +74,11 @@ const PublicApiContent = () => {
           </a>
           <a
             className="underline hover:font-bold hover:underline"
-            href="https://www.npmjs.com/package/n8n-nodes-postiz"
+            href="https://www.npmjs.com/package/n8n-nodes-postys"
             target="_blank"
           >
             <br />
-            {t('check_n8n', 'Check out our N8N custom node for Postiz.')}
+            {t('check_n8n', 'Check out our N8N custom node for Postys.')}
           </a>
         </div>
         <div className="flex flex-col">
@@ -117,8 +117,8 @@ const PublicApiContent = () => {
         <h3 className="text-[20px]">{t('mcp', 'MCP')}</h3>
         <div className="text-customColor18 mt-[4px]">
           {t(
-            'connect_your_mcp_client_to_postiz_to_schedule_your_posts_faster',
-            'Connect Postiz MCP server to your client (Http streaming) to schedule your posts faster.'
+            'connect_your_mcp_client_to_postys_to_schedule_your_posts_faster',
+            'Connect Postys MCP server to your client (Http streaming) to schedule your posts faster.'
           )}
         </div>
         <div className="my-[16px] mt-[16px] bg-sixth border-fifth items-center border rounded-[4px] p-[24px] flex gap-[24px]">
@@ -149,13 +149,13 @@ const PublicApiContent = () => {
       </div>
 
       <div className="flex flex-col">
-        <h3 className="text-[20px]">Building your Postiz payload</h3>
+        <h3 className="text-[20px]">Building your Postys payload</h3>
         <div className="text-customColor18 mt-[4px] whitespace-pre-line">
           Sending a POST request to <strong className="text-textColor">/posts</strong> might feel a bit overwhelming as many
           platforms have different requirements.{'\n'}
-          We have created an easy way to build your Postiz payload to schedule
+          We have created an easy way to build your Postys payload to schedule
           posts. {'\n'}
-          You can use the Postiz wizard, and schedule a post with our UI, after
+          You can use the Postys wizard, and schedule a post with our UI, after
           you added all your text and settings, the wizard will generate the
           payload for you.{'\n'}
         </div>

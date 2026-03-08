@@ -3,11 +3,11 @@ import { Reflector } from '@nestjs/core';
 import {
   AppAbility,
   PermissionsService,
-} from '@gitroom/backend/services/auth/permissions/permissions.service';
+} from '@postys/backend/services/auth/permissions/permissions.service';
 import {
   AbilityPolicy,
   CHECK_POLICIES_KEY,
-} from '@gitroom/backend/services/auth/permissions/permissions.ability';
+} from '@postys/backend/services/auth/permissions/permissions.ability';
 import { Organization } from '@prisma/client';
 import { Request } from 'express';
 import { SubscriptionException } from './permission.exception.class';
@@ -47,17 +47,7 @@ export class PoliciesGuard implements CanActivate {
     // @ts-ignore
     const ability = await this._authorizationService.check(org.id, org.createdAt, org.users[0].role, policyHandlers);
 
-    const item = policyHandlers.find(
-      (handler) => !this.execPolicyHandler(handler, ability)
-    );
-
-    if (item) {
-      throw new SubscriptionException({
-        section: item[1],
-        action: item[0],
-      });
-    }
-
+    // Billing checks disabled - allow all permissions
     return true;
   }
 

@@ -1,14 +1,14 @@
 'use client';
 
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { Web3ProviderInterface } from '@gitroom/frontend/components/launches/web3/web3.provider.interface';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { Input } from '@gitroom/react/form/input';
-import { Button } from '@gitroom/react/form/button';
+import { Web3ProviderInterface } from '@postys/frontend/components/launches/web3/web3.provider.interface';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { timer } from '@postys/helpers/utils/timer';
+import { Input } from '@postys/react/form/input';
+import { Button } from '@postys/react/form/button';
 import copy from 'copy-to-clipboard';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 
 export const MoltbookProvider: FC<Web3ProviderInterface> = (props) => {
   const { onComplete, nonce } = props;
@@ -37,7 +37,7 @@ export const MoltbookProvider: FC<Web3ProviderInterface> = (props) => {
         method: 'POST',
         body: JSON.stringify({
           name: agentName.trim(),
-          description: agentDescription.trim() || 'Postiz social media scheduler',
+          description: agentDescription.trim() || 'Postys social media scheduler',
         }),
       });
 
@@ -105,7 +105,7 @@ export const MoltbookProvider: FC<Web3ProviderInterface> = (props) => {
               name="agentName"
               disableForm={true}
               onChange={(e) => setAgentName(e.target.value)}
-              placeholder="MyPostizAgent"
+              placeholder="MyPostysAgent"
             />
             <Input
               label={t('description_optional', 'Description (optional)')}

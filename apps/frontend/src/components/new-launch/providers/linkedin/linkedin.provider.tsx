@@ -3,13 +3,13 @@
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { Checkbox } from '@gitroom/react/form/checkbox';
-import { Input } from '@gitroom/react/form/input';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { LinkedinDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/linkedin.dto';
-import { LinkedinPreview } from '@gitroom/frontend/components/new-launch/providers/linkedin/linkedin.preview';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
+import { Checkbox } from '@postys/react/form/checkbox';
+import { Input } from '@postys/react/form/input';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { LinkedinDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/linkedin.dto';
+import { LinkedinPreview } from '@postys/frontend/components/new-launch/providers/linkedin/linkedin.preview';
 
 const LinkedInSettings = () => {
   const t = useT();

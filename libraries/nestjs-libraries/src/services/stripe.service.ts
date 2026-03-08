@@ -1,16 +1,16 @@
 import Stripe from 'stripe';
 import { Injectable } from '@nestjs/common';
 import { Organization, User } from '@prisma/client';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { BillingSubscribeDto } from '@gitroom/nestjs-libraries/dtos/billing/billing.subscribe.dto';
+import { SubscriptionService } from '@postys/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { OrganizationService } from '@postys/nestjs-libraries/database/prisma/organizations/organization.service';
+import { makeId } from '@postys/nestjs-libraries/services/make.is';
+import { BillingSubscribeDto } from '@postys/nestjs-libraries/dtos/billing/billing.subscribe.dto';
 import { groupBy } from 'lodash';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { TrackService } from '@gitroom/nestjs-libraries/track/track.service';
-import { UsersService } from '@gitroom/nestjs-libraries/database/prisma/users/users.service';
-import { TrackEnum } from '@gitroom/nestjs-libraries/user/track.enum';
+import { pricing } from '@postys/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { AuthService } from '@postys/helpers/auth/auth.service';
+import { TrackService } from '@postys/nestjs-libraries/track/track.service';
+import { UsersService } from '@postys/nestjs-libraries/database/prisma/users/users.service';
+import { TrackEnum } from '@postys/nestjs-libraries/user/track.enum';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -318,7 +318,7 @@ export class StripeService {
     if (sub.cancel_at_period_end) {
       const { cancel_at } = await stripe.subscriptions.update(sub.id, {
         cancel_at_period_end: false,
-        metadata: { service: 'gitroom', id },
+        metadata: { service: 'postys', id },
       });
 
       return {
@@ -348,7 +348,7 @@ export class StripeService {
     // Payment succeeded — cancel at end of billing period
     const { cancel_at } = await stripe.subscriptions.update(sub.id, {
       cancel_at_period_end: true,
-      metadata: { service: 'gitroom', id },
+      metadata: { service: 'postys', id },
     });
 
     return {
@@ -463,7 +463,7 @@ export class StripeService {
       subscription_data: {
         ...(allowTrial ? { trial_period_days: 7 } : {}),
         metadata: {
-          service: 'gitroom',
+          service: 'postys',
           ...body,
           userId,
           uniqueId,
@@ -524,7 +524,7 @@ export class StripeService {
       subscription_data: {
         ...(allowTrial ? { trial_period_days: 7 } : {}),
         metadata: {
-          service: 'gitroom',
+          service: 'postys',
           ...body,
           userId,
           uniqueId,
@@ -798,7 +798,7 @@ export class StripeService {
       await stripe.subscriptions.update(currentUserSubscription.data[0].id, {
         cancel_at_period_end: false,
         metadata: {
-          service: 'gitroom',
+          service: 'postys',
           ...body,
           userId,
           id,

@@ -1,11 +1,11 @@
-import { getT } from '@gitroom/react/translation/get.translation.service.backend';
+import { getT } from '@postys/react/translation/get.translation.service.backend';
 
 export const dynamic = 'force-dynamic';
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import loadDynamic from 'next/dynamic';
-import { TestimonialComponent } from '@gitroom/frontend/components/auth/testimonial.component';
-import { LogoTextComponent } from '@gitroom/frontend/components/ui/logo-text.component';
+import { TestimonialComponent } from '@postys/frontend/components/auth/testimonial.component';
+import { LogoTextComponent } from '@postys/frontend/components/ui/logo-text.component';
 const ReturnUrlComponent = loadDynamic(() => import('./return.url.component'));
 export default async function AuthLayout({
   children,
@@ -29,7 +29,7 @@ export default async function AuthLayout({
           Over <span className="text-[42px] text-[#FC69FF]">20,000+</span>{' '}
           Entrepreneurs use
           <br />
-          Postiz To Grow Their Social Presence
+          Postys To Grow Their Social Presence
         </div>
         <TestimonialComponent />
       </div>

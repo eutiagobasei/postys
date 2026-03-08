@@ -1,9 +1,9 @@
 import { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import Loading from 'react-loading';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useDecisionModal } from '@gitroom/frontend/components/layout/new-modal';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { timer } from '@postys/helpers/utils/timer';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useDecisionModal } from '@postys/frontend/components/layout/new-modal';
 export const CheckPayment: FC<{
   check: string;
   mutate: () => void;

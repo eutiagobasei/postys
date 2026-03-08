@@ -1,8 +1,8 @@
 import { Mastra } from '@mastra/core/mastra';
 import { ConsoleLogger } from '@mastra/core/logger';
-import { pStore } from '@gitroom/nestjs-libraries/chat/mastra.store';
+import { pStore } from '@postys/nestjs-libraries/chat/mastra.store';
 import { Injectable } from '@nestjs/common';
-import { LoadToolsService } from '@gitroom/nestjs-libraries/chat/load.tools.service';
+import { LoadToolsService } from '@postys/nestjs-libraries/chat/load.tools.service';
 
 @Injectable()
 export class MastraService {
@@ -14,7 +14,7 @@ export class MastraService {
       new Mastra({
         storage: pStore,
         agents: {
-          postiz: await this._loadToolsService.agent(),
+          postys: await this._loadToolsService.agent(),
         },
         logger: new ConsoleLogger({
           level: 'info',

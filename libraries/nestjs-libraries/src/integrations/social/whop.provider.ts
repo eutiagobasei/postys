@@ -5,13 +5,13 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { SocialAbstract } from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { WhopDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/whop.dto';
+} from '@postys/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeId } from '@postys/nestjs-libraries/services/make.is';
+import { timer } from '@postys/helpers/utils/timer';
+import { SocialAbstract } from '@postys/nestjs-libraries/integrations/social.abstract';
+import { WhopDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/whop.dto';
 import { Integration } from '@prisma/client';
-import { Tool } from '@gitroom/nestjs-libraries/integrations/tool.decorator';
+import { Tool } from '@postys/nestjs-libraries/integrations/tool.decorator';
 
 export class WhopProvider extends SocialAbstract implements SocialProvider {
   identifier = 'whop';

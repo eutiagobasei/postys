@@ -1,16 +1,16 @@
-import { Input } from '@gitroom/react/form/input';
+import { Input } from '@postys/react/form/input';
 import { ChangeEventHandler, FC, useCallback, useMemo, useState } from 'react';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { Select } from '@gitroom/react/form/select';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { setCookie } from '@gitroom/frontend/components/layout/layout.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { Button } from '@gitroom/react/form/button';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { Select } from '@postys/react/form/select';
+import { pricing } from '@postys/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { deleteDialog } from '@postys/react/helpers/delete.dialog';
+import { useVariables } from '@postys/react/helpers/variable.context';
+import { setCookie } from '@postys/frontend/components/layout/layout.context';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
+import { Button } from '@postys/react/form/button';
 
 interface Charge {
   id: string;

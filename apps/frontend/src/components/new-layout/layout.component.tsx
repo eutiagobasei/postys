@@ -1,10 +1,10 @@
 'use client';
 
 import React, { ReactNode, useCallback } from 'react';
-import { Logo } from '@gitroom/frontend/components/new-layout/logo';
+import { Logo } from '@postys/frontend/components/new-layout/logo';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 const ModeComponent = dynamic(
-  () => import('@gitroom/frontend/components/layout/mode.component'),
+  () => import('@postys/frontend/components/layout/mode.component'),
   {
     ssr: false,
   }
@@ -12,34 +12,34 @@ const ModeComponent = dynamic(
 
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { useVariables } from '@postys/react/helpers/variable.context';
 import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
-import { CheckPayment } from '@gitroom/frontend/components/layout/check.payment';
-import { ToolTip } from '@gitroom/frontend/components/layout/top.tip';
-import { ShowMediaBoxModal } from '@gitroom/frontend/components/media/media.component';
-import { ShowLinkedinCompany } from '@gitroom/frontend/components/launches/helpers/linkedin.component';
-import { MediaSettingsLayout } from '@gitroom/frontend/components/launches/helpers/media.settings.component';
-import { Toaster } from '@gitroom/react/toaster/toaster';
-import { ShowPostSelector } from '@gitroom/frontend/components/post-url-selector/post.url.selector';
-import { NewSubscription } from '@gitroom/frontend/components/layout/new.subscription';
-import { Support } from '@gitroom/frontend/components/layout/support';
-import { ContinueProvider } from '@gitroom/frontend/components/layout/continue.provider';
-import { ContextWrapper } from '@gitroom/frontend/components/layout/user.context';
+import { CheckPayment } from '@postys/frontend/components/layout/check.payment';
+import { ToolTip } from '@postys/frontend/components/layout/top.tip';
+import { ShowMediaBoxModal } from '@postys/frontend/components/media/media.component';
+import { ShowLinkedinCompany } from '@postys/frontend/components/launches/helpers/linkedin.component';
+import { MediaSettingsLayout } from '@postys/frontend/components/launches/helpers/media.settings.component';
+import { Toaster } from '@postys/react/toaster/toaster';
+import { ShowPostSelector } from '@postys/frontend/components/post-url-selector/post.url.selector';
+import { NewSubscription } from '@postys/frontend/components/layout/new.subscription';
+import { Support } from '@postys/frontend/components/layout/support';
+import { ContinueProvider } from '@postys/frontend/components/layout/continue.provider';
+import { ContextWrapper } from '@postys/frontend/components/layout/user.context';
 import { CopilotKit } from '@copilotkit/react-core';
-import { MantineWrapper } from '@gitroom/react/helpers/mantine.wrapper';
-import { Impersonate } from '@gitroom/frontend/components/layout/impersonate';
-import { Title } from '@gitroom/frontend/components/layout/title';
-import { TopMenu } from '@gitroom/frontend/components/layout/top.menu';
-import { LanguageComponent } from '@gitroom/frontend/components/layout/language.component';
-import { ChromeExtensionComponent } from '@gitroom/frontend/components/layout/chrome.extension.component';
-import NotificationComponent from '@gitroom/frontend/components/notifications/notification.component';
-import { OrganizationSelector } from '@gitroom/frontend/components/layout/organization.selector';
-import { StreakComponent } from '@gitroom/frontend/components/layout/streak.component';
-import { PreConditionComponent } from '@gitroom/frontend/components/layout/pre-condition.component';
-import { AttachToFeedbackIcon } from '@gitroom/frontend/components/new-layout/sentry.feedback.component';
-import { FirstBillingComponent } from '@gitroom/frontend/components/billing/first.billing.component';
+import { MantineWrapper } from '@postys/react/helpers/mantine.wrapper';
+import { Impersonate } from '@postys/frontend/components/layout/impersonate';
+import { Title } from '@postys/frontend/components/layout/title';
+import { TopMenu } from '@postys/frontend/components/layout/top.menu';
+import { LanguageComponent } from '@postys/frontend/components/layout/language.component';
+import { ChromeExtensionComponent } from '@postys/frontend/components/layout/chrome.extension.component';
+import NotificationComponent from '@postys/frontend/components/notifications/notification.component';
+import { OrganizationSelector } from '@postys/frontend/components/layout/organization.selector';
+import { StreakComponent } from '@postys/frontend/components/layout/streak.component';
+import { PreConditionComponent } from '@postys/frontend/components/layout/pre-condition.component';
+import { AttachToFeedbackIcon } from '@postys/frontend/components/new-layout/sentry.feedback.component';
+import { FirstBillingComponent } from '@postys/frontend/components/billing/first.billing.component';
 
 const jakartaSans = Plus_Jakarta_Sans({
   weight: ['600', '500', '700'],

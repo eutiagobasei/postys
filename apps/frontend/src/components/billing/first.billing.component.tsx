@@ -2,34 +2,34 @@
 
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { useVariables } from '@postys/react/helpers/variable.context';
 import { loadStripe, Stripe } from '@stripe/stripe-js';
-import { OrganizationSelector } from '@gitroom/frontend/components/layout/organization.selector';
-import { LanguageComponent } from '@gitroom/frontend/components/layout/language.component';
-import { AttachToFeedbackIcon } from '@gitroom/frontend/components/new-layout/sentry.feedback.component';
-import NotificationComponent from '@gitroom/frontend/components/notifications/notification.component';
+import { OrganizationSelector } from '@postys/frontend/components/layout/organization.selector';
+import { LanguageComponent } from '@postys/frontend/components/layout/language.component';
+import { AttachToFeedbackIcon } from '@postys/frontend/components/new-layout/sentry.feedback.component';
+import NotificationComponent from '@postys/frontend/components/notifications/notification.component';
 import dynamic from 'next/dynamic';
-import { LogoTextComponent } from '@gitroom/frontend/components/ui/logo-text.component';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { LogoTextComponent } from '@postys/frontend/components/ui/logo-text.component';
+import { pricing } from '@postys/nestjs-libraries/database/prisma/subscriptions/pricing';
 import { capitalize } from 'lodash';
 import clsx from 'clsx';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
-import { CheckIconComponent } from '@gitroom/frontend/components/ui/check.icon.component';
+import { LoadingComponent } from '@postys/frontend/components/layout/loading';
+import { CheckIconComponent } from '@postys/frontend/components/ui/check.icon.component';
 import {
   FAQComponent,
   FAQSection,
-} from '@gitroom/frontend/components/billing/faq.component';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useDubClickId } from '@gitroom/frontend/components/layout/dubAnalytics';
+} from '@postys/frontend/components/billing/faq.component';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { useDubClickId } from '@postys/frontend/components/layout/dubAnalytics';
 import Image from 'next/image';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
 import useCookie from 'react-use-cookie';
-import { LogoutComponent } from '@gitroom/frontend/components/layout/logout.component';
+import { LogoutComponent } from '@postys/frontend/components/layout/logout.component';
 
 const ModeComponent = dynamic(
-  () => import('@gitroom/frontend/components/layout/mode.component'),
+  () => import('@postys/frontend/components/layout/mode.component'),
   {
     ssr: false,
   }
@@ -37,7 +37,7 @@ const ModeComponent = dynamic(
 
 const EmbeddedBilling = dynamic(
   () =>
-    import('@gitroom/frontend/components/billing/embedded.billing').then(
+    import('@postys/frontend/components/billing/embedded.billing').then(
       (mod) => mod.EmbeddedBilling
     ),
   {
@@ -80,12 +80,12 @@ export const FirstBillingComponent = () => {
 
   const showYouTube = () => {
     modals.openModal({
-      title: 'Grow Fast With Postiz (Play the video)',
+      title: 'Grow Fast With Postys (Play the video)',
       children: (
         <iframe
           className="h-full aspect-video min-w-[800px]"
           src="https://www.youtube.com/embed/BdsCVvEYgHU?si=vvhaZJ8I5oXXvVJS?autoplay=1"
-          title="Postiz Tutorial"
+          title="Postys Tutorial"
           allow="autoplay"
           allowFullScreen
         />
@@ -120,8 +120,8 @@ export const FirstBillingComponent = () => {
           </span>{' '}
           {t('billing_who_use', 'who use')}{' '}
           {t(
-            'billing_postiz_grow_social',
-            'Postiz To Grow Their Social Presence'
+            'billing_postys_grow_social',
+            'Postys To Grow Their Social Presence'
           )}
         </div>
 
@@ -136,7 +136,7 @@ export const FirstBillingComponent = () => {
                 alt="YouTube"
               />
             </div>
-            <div>See the power of Postiz (click here)</div>
+            <div>See the power of Postys (click here)</div>
           </div>
         </div>
 

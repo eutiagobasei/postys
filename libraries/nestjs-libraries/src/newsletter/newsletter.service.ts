@@ -1,4 +1,4 @@
-import { newsletterProviders } from '@gitroom/nestjs-libraries/newsletter/providers';
+import { newsletterProviders } from '@postys/nestjs-libraries/newsletter/providers';
 
 export class NewsletterService {
   static getProvider() {

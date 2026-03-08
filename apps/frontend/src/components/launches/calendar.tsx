@@ -13,7 +13,7 @@ import {
   CalendarContext,
   Integrations,
   useCalendar,
-} from '@gitroom/frontend/components/launches/calendar.context';
+} from '@postys/frontend/components/launches/calendar.context';
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import 'dayjs/locale/he';
@@ -30,15 +30,15 @@ import 'dayjs/locale/ar';
 import 'dayjs/locale/tr';
 import 'dayjs/locale/vi';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
 import clsx from 'clsx';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { ExistingDataContextProvider } from '@gitroom/frontend/components/launches/helpers/use.existing.data';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { ExistingDataContextProvider } from '@postys/frontend/components/launches/helpers/use.existing.data';
 import { useDrag, useDrop } from 'react-dnd';
 import { Integration, Post, State, Tags } from '@prisma/client';
-import { useAddProvider } from '@gitroom/frontend/components/launches/add.provider.component';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
+import { useAddProvider } from '@postys/frontend/components/launches/add.provider.component';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useUser } from '@postys/frontend/components/layout/user.context';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import { groupBy, random, sortBy } from 'lodash';
@@ -46,16 +46,16 @@ import Image from 'next/image';
 import { extend } from 'dayjs';
 import { isUSCitizen } from './helpers/isuscitizen.utils';
 import { useInterval } from '@mantine/hooks';
-import { StatisticsModal } from '@gitroom/frontend/components/launches/statistics';
-import { MissingReleaseModal } from '@gitroom/frontend/components/launches/missing-release.modal';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { StatisticsModal } from '@postys/frontend/components/launches/statistics';
+import { MissingReleaseModal } from '@postys/frontend/components/launches/missing-release.modal';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 import i18next from 'i18next';
-import { AddEditModal } from '@gitroom/frontend/components/new-launch/add.edit.modal';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { newDayjs } from '@gitroom/frontend/components/layout/set.timezone';
-import { Button } from '@gitroom/react/form/button';
+import { AddEditModal } from '@postys/frontend/components/new-launch/add.edit.modal';
+import { deleteDialog } from '@postys/react/helpers/delete.dialog';
+import { useVariables } from '@postys/react/helpers/variable.context';
+import { stripHtmlValidation } from '@postys/helpers/utils/strip.html.validation';
+import { newDayjs } from '@postys/frontend/components/layout/set.timezone';
+import { Button } from '@postys/react/form/button';
 
 // Extend dayjs with necessary plugins
 extend(isSameOrAfter);

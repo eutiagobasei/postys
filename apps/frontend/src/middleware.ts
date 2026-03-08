@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getCookieUrlFromDomain } from '@gitroom/helpers/subdomain/subdomain.management';
-import { internalFetch } from '@gitroom/helpers/utils/internal.fetch';
+import { getCookieUrlFromDomain } from '@postys/helpers/subdomain/subdomain.management';
+import { internalFetch } from '@postys/helpers/utils/internal.fetch';
 import acceptLanguage from 'accept-language';
 import {
   cookieName,
   fallbackLng,
   headerName,
   languages,
-} from '@gitroom/react/translation/i18n.config';
+} from '@postys/react/translation/i18n.config';
 acceptLanguage.languages(languages);
 
 // This function can be marked `async` if using `await` inside
@@ -80,7 +80,7 @@ export async function middleware(request: NextRequest) {
       ? ''
       : (url.indexOf('?') > -1 ? '&' : '?') +
         `provider=${(findIndex === 'settings'
-          ? process.env.POSTIZ_GENERIC_OAUTH
+          ? process.env.POSTYS_GENERIC_OAUTH
             ? 'generic'
             : 'github'
           : findIndex

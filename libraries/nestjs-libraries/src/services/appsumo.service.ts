@@ -1,9 +1,9 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import crypto from 'crypto';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { UsersService } from '@gitroom/nestjs-libraries/database/prisma/users/users.service';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
+import { SubscriptionService } from '@postys/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { UsersService } from '@postys/nestjs-libraries/database/prisma/users/users.service';
+import { OrganizationService } from '@postys/nestjs-libraries/database/prisma/organizations/organization.service';
+import { pricing } from '@postys/nestjs-libraries/database/prisma/subscriptions/pricing';
 import { Provider } from '@prisma/client';
 
 const APPSUMO_TIER_MAP: Record<number, 'STANDARD' | 'TEAM' | 'PRO'> = {

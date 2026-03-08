@@ -1,27 +1,27 @@
-import { SentryComponent } from '@gitroom/frontend/components/layout/sentry.component';
+import { SentryComponent } from '@postys/frontend/components/layout/sentry.component';
 
 export const dynamic = 'force-dynamic';
 import '../global.scss';
 import 'react-tooltip/dist/react-tooltip.css';
 import '@copilotkit/react-ui/styles.css';
-import LayoutContext from '@gitroom/frontend/components/layout/layout.context';
+import LayoutContext from '@postys/frontend/components/layout/layout.context';
 import { ReactNode } from 'react';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import PlausibleProvider from 'next-plausible';
 import clsx from 'clsx';
-import { VariableContextComponent } from '@gitroom/react/helpers/variable.context';
+import { VariableContextComponent } from '@postys/react/helpers/variable.context';
 import { Fragment } from 'react';
-import { PHProvider } from '@gitroom/react/helpers/posthog';
-import UtmSaver from '@gitroom/helpers/utils/utm.saver';
-import { DubAnalytics } from '@gitroom/frontend/components/layout/dubAnalytics';
-import { FacebookComponent } from '@gitroom/frontend/components/layout/facebook.component';
+import { PHProvider } from '@postys/react/helpers/posthog';
+import UtmSaver from '@postys/helpers/utils/utm.saver';
+import { DubAnalytics } from '@postys/frontend/components/layout/dubAnalytics';
+import { FacebookComponent } from '@postys/frontend/components/layout/facebook.component';
 import { headers } from 'next/headers';
-import { headerName } from '@gitroom/react/translation/i18n.config';
-import { HtmlComponent } from '@gitroom/frontend/components/layout/html.component';
+import { headerName } from '@postys/react/translation/i18n.config';
+import { HtmlComponent } from '@postys/frontend/components/layout/html.component';
 import Script from 'next/script';
 // import dynamicLoad from 'next/dynamic';
 // const SetTimezone = dynamicLoad(
-//   () => import('@gitroom/frontend/components/layout/set.timezone'),
+//   () => import('@postys/frontend/components/layout/set.timezone'),
 //   {
 //     ssr: false,
 //   }
@@ -45,7 +45,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         {!!process.env.DATAFAST_WEBSITE_ID && (
           <Script
             data-website-id={process.env.DATAFAST_WEBSITE_ID}
-            data-domain="postiz.com"
+            data-domain="postys.io"
             src="https://datafa.st/js/script.js"
             strategy="afterInteractive"
           />
@@ -66,9 +66,9 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
           discordUrl={process.env.NEXT_PUBLIC_DISCORD_SUPPORT!}
           frontEndUrl={process.env.FRONTEND_URL!}
           isGeneral={!!process.env.IS_GENERAL}
-          genericOauth={!!process.env.POSTIZ_GENERIC_OAUTH}
-          oauthLogoUrl={process.env.NEXT_PUBLIC_POSTIZ_OAUTH_LOGO_URL!}
-          oauthDisplayName={process.env.NEXT_PUBLIC_POSTIZ_OAUTH_DISPLAY_NAME!}
+          genericOauth={!!process.env.POSTYS_GENERIC_OAUTH}
+          oauthLogoUrl={process.env.NEXT_PUBLIC_POSTYS_OAUTH_LOGO_URL!}
+          oauthDisplayName={process.env.NEXT_PUBLIC_POSTYS_OAUTH_DISPLAY_NAME!}
           uploadDirectory={process.env.NEXT_PUBLIC_UPLOAD_STATIC_DIRECTORY!}
           mcpUrl={process.env.MCP_URL}
           dub={!!process.env.STRIPE_PUBLISHABLE_KEY}
@@ -96,7 +96,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
             <DubAnalytics />
             <FacebookComponent />
             <Plausible
-              domain={!!process.env.IS_GENERAL ? 'postiz.com' : 'gitroom.com'}
+              domain={!!process.env.IS_GENERAL ? 'postys.io' : 'postys.com'}
             >
               <PHProvider
                 phkey={process.env.NEXT_PUBLIC_POSTHOG_KEY}

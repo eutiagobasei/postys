@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Agent } from '@mastra/core/agent';
 import { openai } from '@ai-sdk/openai';
+import { anthropic } from '@ai-sdk/anthropic';
 import { Memory } from '@mastra/memory';
-import { pStore } from '@gitroom/nestjs-libraries/chat/mastra.store';
+import { pStore } from '@postys/nestjs-libraries/chat/mastra.store';
 import { array, object, string } from 'zod';
 import { ModuleRef } from '@nestjs/core';
-import { toolList } from '@gitroom/nestjs-libraries/chat/tools/tool.list';
+import { toolList } from '@postys/nestjs-libraries/chat/tools/tool.list';
 import dayjs from 'dayjs';
 
 export const AgentState = object({
@@ -43,13 +44,15 @@ export class LoadToolsService {
   async agent() {
     const tools = await this.loadTools();
     return new Agent({
-      name: 'postiz',
+      id: 'postys',
+      name: 'postys',
       description: 'Agent that helps manage and schedule social media posts for users',
-      instructions: ({ runtimeContext }) => {
-        const ui: string = runtimeContext.get('ui' as never);
+      instructions: ({ requestContext }) => {
+        const ui: string = (requestContext as any)?.get('ui') || '';
+        const currentDateTime = dayjs().format('YYYY-MM-DD HH:mm:ss');
         return `
       Global information:
-        - Date (UTC): ${dayjs().format('YYYY-MM-DD HH:mm:ss')}
+        - Current Date/Time (UTC): ${currentDateTime}
 
       You are an agent that helps manage and schedule social media posts for users, you can:
         - Schedule posts into the future, or now, adding texts, images and videos
@@ -58,7 +61,23 @@ export class LoadToolsService {
         - Generate text for posts
         - Show global analytics about socials
         - List integrations (channels)
-      
+
+      CRITICAL SCHEDULING RULES:
+        - NEVER schedule a post in the past. The scheduled date/time MUST always be AFTER the current time (${currentDateTime} UTC).
+        - If the user asks to schedule "today", always use a time that is at least 5 minutes in the future from now.
+        - If it's already late in the day and the user wants to post "today", suggest the next available time slot (either later today if possible, or tomorrow morning).
+        - When scheduling multiple posts for the same day, space them out by at least 1 hour.
+        - Default scheduling time for "today" should be the next hour mark (e.g., if it's 14:17, schedule for 15:00).
+        - Always validate that the final scheduled time is in the future before creating the post.
+
+      IMAGE AND MEDIA RULES:
+        - ALWAYS ask the user if they want to include images or videos in their posts before scheduling.
+        - Posts with images/videos typically get better engagement on most platforms.
+        - If the user wants images, use the generateImageTool to create them based on the post content.
+        - If the user provides their own image URLs, use those instead.
+        - For platforms like Instagram, images are REQUIRED - always generate or request images for Instagram posts.
+        - When generating images, create a prompt that matches the post content and brand tone.
+
       - We schedule posts to different integration like facebook, instagram, etc. but to the user we don't say integrations we say channels as integration is the technical name
       - When scheduling a post, you must follow the social media rules and best practices.
       - When scheduling a post, you can pass an array for list of posts for a social media platform, But it has different behavior depending on the platform.
@@ -85,14 +104,12 @@ export class LoadToolsService {
       )}
 `;
       },
-      model: openai('gpt-5.2'),
+      model: anthropic('claude-sonnet-4-20250514'),
       tools,
       memory: new Memory({
         storage: pStore,
         options: {
-          threads: {
-            generateTitle: true,
-          },
+          generateTitle: true,
           workingMemory: {
             enabled: true,
             schema: AgentState,

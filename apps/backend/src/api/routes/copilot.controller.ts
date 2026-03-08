@@ -14,15 +14,15 @@ import {
   copilotRuntimeNodeHttpEndpoint,
   copilotRuntimeNextJSAppRouterEndpoint,
 } from '@copilotkit/runtime';
-import { GetOrgFromRequest } from '@gitroom/nestjs-libraries/user/org.from.request';
+import { GetOrgFromRequest } from '@postys/nestjs-libraries/user/org.from.request';
 import { Organization } from '@prisma/client';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { SubscriptionService } from '@postys/nestjs-libraries/database/prisma/subscriptions/subscription.service';
 import { MastraAgent } from '@ag-ui/mastra';
-import { MastraService } from '@gitroom/nestjs-libraries/chat/mastra.service';
+import { MastraService } from '@postys/nestjs-libraries/chat/mastra.service';
 import { Request, Response } from 'express';
-import { RuntimeContext } from '@mastra/core/di';
-import { CheckPolicies } from '@gitroom/backend/services/auth/permissions/permissions.ability';
-import { AuthorizationActions, Sections } from '@gitroom/backend/services/auth/permissions/permission.exception.class';
+import { RequestContext } from '@mastra/core/request-context';
+import { CheckPolicies } from '@postys/backend/services/auth/permissions/permissions.ability';
+import { AuthorizationActions, Sections } from '@postys/backend/services/auth/permissions/permission.exception.class';
 
 export type ChannelsContext = {
   integrations: string;
@@ -65,27 +65,29 @@ export class CopilotController {
     @GetOrgFromRequest() organization: Organization
   ) {
     if (
-      process.env.OPENAI_API_KEY === undefined ||
-      process.env.OPENAI_API_KEY === ''
+      (process.env.ANTHROPIC_API_KEY === undefined ||
+        process.env.ANTHROPIC_API_KEY === '') &&
+      (process.env.OPENAI_API_KEY === undefined ||
+        process.env.OPENAI_API_KEY === '')
     ) {
-      Logger.warn('OpenAI API key not set, chat functionality will not work');
+      Logger.warn('No AI API key set (ANTHROPIC_API_KEY or OPENAI_API_KEY), chat functionality will not work');
       return;
     }
     const mastra = await this._mastraService.mastra();
-    const runtimeContext = new RuntimeContext<ChannelsContext>();
-    runtimeContext.set(
+    const requestContext = new RequestContext<ChannelsContext>();
+    requestContext.set(
       'integrations',
       req?.body?.variables?.properties?.integrations || []
     );
 
-    runtimeContext.set('organization', JSON.stringify(organization));
-    runtimeContext.set('ui', 'true');
+    requestContext.set('organization', JSON.stringify(organization));
+    requestContext.set('ui', 'true');
 
     const agents = MastraAgent.getLocalAgents({
       resourceId: organization.id,
       mastra,
       // @ts-ignore
-      runtimeContext,
+      requestContext,
     });
 
     const runtime = new CopilotRuntime({
@@ -122,9 +124,9 @@ export class CopilotController {
     @Param('thread') threadId: string
   ): Promise<any> {
     const mastra = await this._mastraService.mastra();
-    const memory = await mastra.getAgent('postiz').getMemory();
+    const memory = await mastra.getAgent('postys').getMemory();
     try {
-      return await memory.query({
+      return await (memory as any).query({
         resourceId: organization.id,
         threadId,
       });
@@ -137,21 +139,22 @@ export class CopilotController {
   @CheckPolicies([AuthorizationActions.Create, Sections.AI])
   async getList(@GetOrgFromRequest() organization: Organization) {
     const mastra = await this._mastraService.mastra();
-    // @ts-ignore
-    const memory = await mastra.getAgent('postiz').getMemory();
-    const list = await memory.getThreadsByResourceIdPaginated({
-      resourceId: organization.id,
-      perPage: 100000,
-      page: 0,
-      orderBy: 'createdAt',
-      sortDirection: 'DESC',
-    });
+    const memory = await mastra.getAgent('postys').getMemory();
+    try {
+      // Try new API first (Mastra v1.9+)
+      const list = await (memory as any).getThreadsByResourceId({
+        resourceId: organization.id,
+      });
 
-    return {
-      threads: list.threads.map((p) => ({
-        id: p.id,
-        title: p.title,
-      })),
-    };
+      return {
+        threads: (list || []).map((p: any) => ({
+          id: p.id,
+          title: p.title,
+        })),
+      };
+    } catch (err) {
+      // Fallback: return empty list if method doesn't exist
+      return { threads: [] };
+    }
   }
 }

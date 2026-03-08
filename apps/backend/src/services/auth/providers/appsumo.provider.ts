@@ -1,9 +1,9 @@
 import {
   AuthProvider,
   AuthProviderAbstract,
-} from '@gitroom/backend/services/auth/providers.interface';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
-import { pricing } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/pricing';
+} from '@postys/backend/services/auth/providers.interface';
+import { SubscriptionService } from '@postys/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { pricing } from '@postys/nestjs-libraries/database/prisma/subscriptions/pricing';
 
 const APPSUMO_OPENID_BASE = 'https://appsumo.com/openid';
 

@@ -3,15 +3,15 @@
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
 import { FC } from 'react';
-import { Select } from '@gitroom/react/form/select';
-import { Checkbox } from '@gitroom/react/form/checkbox';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { InstagramDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/instagram.dto';
-import { InstagramCollaboratorsTags } from '@gitroom/frontend/components/new-launch/providers/instagram/instagram.tags';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { InstagramPreview } from '@gitroom/frontend/components/new-launch/providers/instagram/instagram.preview';
+import { Select } from '@postys/react/form/select';
+import { Checkbox } from '@postys/react/form/checkbox';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { InstagramDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/instagram.dto';
+import { InstagramCollaboratorsTags } from '@postys/frontend/components/new-launch/providers/instagram/instagram.tags';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { InstagramPreview } from '@postys/frontend/components/new-launch/providers/instagram/instagram.preview';
 const postType = [
   {
     value: 'post',

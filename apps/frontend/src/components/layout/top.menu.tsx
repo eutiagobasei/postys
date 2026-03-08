@@ -1,10 +1,10 @@
 'use client';
 
 import { FC, ReactNode } from 'react';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { MenuItem } from '@gitroom/frontend/components/new-layout/menu-item';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { useVariables } from '@postys/react/helpers/variable.context';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { MenuItem } from '@postys/frontend/components/new-layout/menu-item';
 
 interface MenuItemInterface {
   name: string;
@@ -200,7 +200,7 @@ export const useMenuItem = () => {
           />
         </svg>
       ),
-      path: 'https://affiliate.postiz.com',
+      path: 'https://affiliate.postys.io',
       role: ['ADMIN', 'SUPERADMIN', 'USER'],
       requireBilling: true,
     },

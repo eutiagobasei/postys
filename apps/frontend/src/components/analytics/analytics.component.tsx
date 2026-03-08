@@ -1,11 +1,11 @@
 'use client';
 
-import { StarsAndForks } from '@gitroom/frontend/components/analytics/stars.and.forks';
+import { StarsAndForks } from '@postys/frontend/components/analytics/stars.and.forks';
 import { FC, useCallback } from 'react';
-import { StarsTableComponent } from '@gitroom/frontend/components/analytics/stars.table.component';
+import { StarsTableComponent } from '@postys/frontend/components/analytics/stars.table.component';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { LoadingComponent } from '@postys/frontend/components/layout/loading';
 export const AnalyticsComponent: FC = () => {
   const fetch = useFetch();
   const load = useCallback(async (path: string) => {

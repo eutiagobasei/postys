@@ -2,13 +2,13 @@
 
 import { EventEmitter } from 'events';
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Input } from '@gitroom/react/form/input';
-import { Button } from '@gitroom/react/form/button';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+import { TopTitle } from '@postys/frontend/components/launches/helpers/top.title.component';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { Input } from '@postys/react/form/input';
+import { Button } from '@postys/react/form/button';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { useLaunchStore } from '@postys/frontend/components/new-launch/store';
 const postUrlEmitter = new EventEmitter();
 export const ShowLinkedinCompany = () => {
   const [showPostSelector, setShowPostSelector] = useState(false);
@@ -163,7 +163,7 @@ export const LinkedinCompany: FC<{
             label="URL"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            placeholder="https://www.linkedin.com/company/gitroom"
+            placeholder="https://www.linkedin.com/company/postys"
           />
           <Button onClick={getCompany}>{t('add', 'Add')}</Button>
         </div>

@@ -1,8 +1,8 @@
-import { TrackEnum } from '@gitroom/nestjs-libraries/user/track.enum';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { TrackEnum } from '@postys/nestjs-libraries/user/track.enum';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
 import { useCallback } from 'react';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
+import { useVariables } from '@postys/react/helpers/variable.context';
 export const useTrack = () => {
   const user = useUser();
   const fetch = useFetch();

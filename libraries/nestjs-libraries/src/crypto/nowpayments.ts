@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { AuthService } from '@gitroom/helpers/auth/auth.service';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { makeId } from '@postys/nestjs-libraries/services/make.is';
+import { AuthService } from '@postys/helpers/auth/auth.service';
+import { SubscriptionService } from '@postys/nestjs-libraries/database/prisma/subscriptions/subscription.service';
 
 export interface ProcessPayment {
   payment_id: number;
@@ -60,7 +60,7 @@ export class Nowpayments {
           price_currency: 'USD',
           order_id: make,
           pay_currency: 'SOL',
-          order_description: 'Lifetime deal account for Postiz',
+          order_description: 'Lifetime deal account for Postys',
           ipn_callback_url:
             process.env.NEXT_PUBLIC_BACKEND_URL +
             `/public/crypto/${signRequest}`,

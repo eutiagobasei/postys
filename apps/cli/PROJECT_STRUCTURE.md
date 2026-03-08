@@ -1,8 +1,8 @@
-# Postiz CLI - Project Structure
+# Postys CLI - Project Structure
 
 ## Overview
 
-The Postiz CLI is a complete command-line interface package for interacting with the Postiz social media scheduling API. It's designed for developers and AI agents to automate social media posting.
+The Postys CLI is a complete command-line interface package for interacting with the Postys social media scheduling API. It's designed for developers and AI agents to automate social media posting.
 
 ## Directory Structure
 
@@ -10,7 +10,7 @@ The Postiz CLI is a complete command-line interface package for interacting with
 apps/cli/
 ├── src/                          # Source code
 │   ├── index.ts                  # Main CLI entry point
-│   ├── api.ts                    # API client for Postiz API
+│   ├── api.ts                    # API client for Postys API
 │   ├── config.ts                 # Configuration and environment handling
 │   └── commands/                 # Command implementations
 │       ├── posts.ts              # Posts management commands
@@ -50,8 +50,8 @@ apps/cli/
 - Contains help text and usage examples
 
 #### `src/api.ts`
-- API client class `PostizAPI`
-- Handles all HTTP requests to the Postiz API
+- API client class `PostysAPI`
+- Handles all HTTP requests to the Postys API
 - Methods for:
   - Creating posts
   - Listing posts
@@ -78,14 +78,14 @@ apps/cli/
 
 #### `src/commands/upload.ts`
 - Media upload functionality
-- `uploadFile()` - Upload images to Postiz
+- `uploadFile()` - Upload images to Postys
 
 ### Configuration Files
 
 #### `package.json`
-- Package name: `postiz`
+- Package name: `postys`
 - Version: `1.0.0`
-- Executable bin: `postiz` → `dist/index.js`
+- Executable bin: `postys` → `dist/index.js`
 - Scripts: `dev`, `build`, `start`, `publish`
 - Repository and metadata information
 
@@ -220,8 +220,8 @@ Output to console
 
 | Variable | Required | Default | Usage |
 |----------|----------|---------|-------|
-| `POSTIZ_API_KEY` | ✅ Yes | - | Authentication token |
-| `POSTIZ_API_URL` | ❌ No | `https://api.postiz.com` | Custom API endpoint |
+| `POSTYS_API_KEY` | ✅ Yes | - | Authentication token |
+| `POSTYS_API_URL` | ❌ No | `https://api.postys.io` | Custom API endpoint |
 
 ## Dependencies
 
@@ -252,7 +252,7 @@ Output to console
    - Uses shared dependencies from root
    - No duplicate packages
 
-### With Postiz API
+### With Postys API
 
 1. **Endpoints Used**
    - `POST /public/v1/posts` - Create post
@@ -302,7 +302,7 @@ node dist/index.js --help
 node dist/index.js posts:list
 
 # Test with API key (requires valid key)
-POSTIZ_API_KEY=test node dist/index.js integrations:list
+POSTYS_API_KEY=test node dist/index.js integrations:list
 ```
 
 ### Automated Testing (Future)
@@ -320,7 +320,7 @@ POSTIZ_API_KEY=test node dist/index.js integrations:list
 
 2. **Features**
    - Interactive mode
-   - Config file support (~/.postizrc)
+   - Config file support (~/.postysrc)
    - Output formatting (JSON, table, CSV)
    - Verbose/debug mode
    - Batch operations from file
@@ -333,6 +333,6 @@ POSTIZ_API_KEY=test node dist/index.js integrations:list
 
 ## Support
 
-- **Issues:** https://github.com/gitroomhq/postiz-app/issues
+- **Issues:** https://github.com/postyshq/postys-app/issues
 - **Docs:** See README.md, SKILL.md, QUICK_START.md
-- **Website:** https://postiz.com
+- **Website:** https://postys.io

@@ -1,27 +1,27 @@
 'use client';
 
 import React, { FC, useCallback, useMemo, useState } from 'react';
-import { Integrations } from '@gitroom/frontend/components/launches/calendar.context';
+import { Integrations } from '@postys/frontend/components/launches/calendar.context';
 import dayjs from 'dayjs';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { Select } from '@gitroom/react/form/select';
-import { Button } from '@gitroom/react/form/button';
+import { deleteDialog } from '@postys/react/helpers/delete.dialog';
+import { Select } from '@postys/react/form/select';
+import { Button } from '@postys/react/form/button';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
 // @ts-ignore
 import useKeypress from 'react-use-keypress';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
 import { sortBy } from 'lodash';
-import { usePreventWindowUnload } from '@gitroom/react/helpers/use.prevent.window.unload';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { newDayjs } from '@gitroom/frontend/components/layout/set.timezone';
+import { usePreventWindowUnload } from '@postys/react/helpers/use.prevent.window.unload';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { newDayjs } from '@postys/frontend/components/layout/set.timezone';
 import clsx from 'clsx';
 import {
   TrashIcon,
   PlusIcon,
   DelayIcon,
-} from '@gitroom/frontend/components/ui/icons';
+} from '@postys/frontend/components/ui/icons';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);

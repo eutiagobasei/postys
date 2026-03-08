@@ -1,25 +1,28 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { MediaRepository } from '@gitroom/nestjs-libraries/database/prisma/media/media.repository';
-import { OpenaiService } from '@gitroom/nestjs-libraries/openai/openai.service';
-import { SubscriptionService } from '@gitroom/nestjs-libraries/database/prisma/subscriptions/subscription.service';
+import { HttpException, Injectable, Logger } from '@nestjs/common';
+import { MediaRepository } from '@postys/nestjs-libraries/database/prisma/media/media.repository';
+import { OpenaiService } from '@postys/nestjs-libraries/openai/openai.service';
+import { GeminiService } from '@postys/nestjs-libraries/openai/gemini.service';
+import { SubscriptionService } from '@postys/nestjs-libraries/database/prisma/subscriptions/subscription.service';
 import { Organization } from '@prisma/client';
-import { SaveMediaInformationDto } from '@gitroom/nestjs-libraries/dtos/media/save.media.information.dto';
-import { VideoManager } from '@gitroom/nestjs-libraries/videos/video.manager';
-import { VideoDto } from '@gitroom/nestjs-libraries/dtos/videos/video.dto';
-import { UploadFactory } from '@gitroom/nestjs-libraries/upload/upload.factory';
+import { SaveMediaInformationDto } from '@postys/nestjs-libraries/dtos/media/save.media.information.dto';
+import { VideoManager } from '@postys/nestjs-libraries/videos/video.manager';
+import { VideoDto } from '@postys/nestjs-libraries/dtos/videos/video.dto';
+import { UploadFactory } from '@postys/nestjs-libraries/upload/upload.factory';
 import {
   AuthorizationActions,
   Sections,
   SubscriptionException,
-} from '@gitroom/backend/services/auth/permissions/permission.exception.class';
+} from '@postys/backend/services/auth/permissions/permission.exception.class';
 
 @Injectable()
 export class MediaService {
   private storage = UploadFactory.createStorage();
+  private readonly logger = new Logger(MediaService.name);
 
   constructor(
     private _mediaRepository: MediaRepository,
     private _openAi: OpenaiService,
+    private _gemini: GeminiService,
     private _subscriptionService: SubscriptionService,
     private _videoManager: VideoManager
   ) {}
@@ -42,9 +45,29 @@ export class MediaService {
       'ai_images',
       async () => {
         if (generatePromptFirst) {
-          prompt = await this._openAi.generatePromptForPicture(prompt);
-          console.log('Prompt:', prompt);
+          // Try Gemini first for prompt generation, fallback to OpenAI
+          try {
+            if (this._gemini.isConfigured()) {
+              prompt = await this._gemini.generatePromptForPicture(prompt);
+            } else {
+              prompt = await this._openAi.generatePromptForPicture(prompt);
+            }
+          } catch (err) {
+            this.logger.warn('Prompt generation failed, using original prompt');
+          }
         }
+
+        // Try Gemini first if configured, fallback to OpenAI
+        if (this._gemini.isConfigured()) {
+          try {
+            this.logger.log('Generating image with Gemini...');
+            return await this._gemini.generateImage(prompt);
+          } catch (geminiError) {
+            this.logger.warn('Gemini image generation failed, trying OpenAI...', geminiError);
+          }
+        }
+
+        // Fallback to OpenAI
         return this._openAi.generateImage(prompt, !!generatePromptFirst);
       }
     );

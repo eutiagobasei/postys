@@ -4,12 +4,12 @@ import { FC } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { Input } from '@gitroom/react/form/input';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { WordpressPostType } from '@gitroom/frontend/components/new-launch/providers/wordpress/wordpress.post.type';
-import { MediaComponent } from '@gitroom/frontend/components/media/media.component';
-import { WordpressDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/wordpress.dto';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
+import { Input } from '@postys/react/form/input';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { WordpressPostType } from '@postys/frontend/components/new-launch/providers/wordpress/wordpress.post.type';
+import { MediaComponent } from '@postys/frontend/components/media/media.component';
+import { WordpressDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/wordpress.dto';
 
 const WordpressSettings: FC = () => {
   const form = useSettings();

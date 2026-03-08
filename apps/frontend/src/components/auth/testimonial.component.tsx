@@ -3,8 +3,8 @@
 import {
   testimonials1,
   testimonials2,
-} from '@gitroom/react/helpers/testomonials';
-import { Testimonial } from '@gitroom/frontend/components/auth/testimonial';
+} from '@postys/react/helpers/testomonials';
+import { Testimonial } from '@postys/frontend/components/auth/testimonial';
 
 export const TestimonialComponent = () => {
   return (

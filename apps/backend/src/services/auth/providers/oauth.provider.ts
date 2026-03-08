@@ -1,37 +1,37 @@
 import {
   AuthProvider,
   AuthProviderAbstract,
-} from '@gitroom/backend/services/auth/providers.interface';
+} from '@postys/backend/services/auth/providers.interface';
 
 @AuthProvider({ provider: 'GENERIC' })
 export class OauthProvider extends AuthProviderAbstract {
   private getConfig() {
     const {
-      POSTIZ_OAUTH_AUTH_URL,
-      POSTIZ_OAUTH_CLIENT_ID,
-      POSTIZ_OAUTH_CLIENT_SECRET,
-      POSTIZ_OAUTH_TOKEN_URL,
-      POSTIZ_OAUTH_USERINFO_URL,
+      POSTYS_OAUTH_AUTH_URL,
+      POSTYS_OAUTH_CLIENT_ID,
+      POSTYS_OAUTH_CLIENT_SECRET,
+      POSTYS_OAUTH_TOKEN_URL,
+      POSTYS_OAUTH_USERINFO_URL,
       FRONTEND_URL,
     } = process.env;
 
     if (
-      !POSTIZ_OAUTH_USERINFO_URL ||
-      !POSTIZ_OAUTH_TOKEN_URL ||
-      !POSTIZ_OAUTH_CLIENT_ID ||
-      !POSTIZ_OAUTH_CLIENT_SECRET ||
-      !POSTIZ_OAUTH_AUTH_URL ||
+      !POSTYS_OAUTH_USERINFO_URL ||
+      !POSTYS_OAUTH_TOKEN_URL ||
+      !POSTYS_OAUTH_CLIENT_ID ||
+      !POSTYS_OAUTH_CLIENT_SECRET ||
+      !POSTYS_OAUTH_AUTH_URL ||
       !FRONTEND_URL
     ) {
-      throw new Error('POSTIZ_OAUTH environment variables are not set');
+      throw new Error('POSTYS_OAUTH environment variables are not set');
     }
 
     return {
-      authUrl: POSTIZ_OAUTH_AUTH_URL,
-      clientId: POSTIZ_OAUTH_CLIENT_ID,
-      clientSecret: POSTIZ_OAUTH_CLIENT_SECRET,
-      tokenUrl: POSTIZ_OAUTH_TOKEN_URL,
-      userInfoUrl: POSTIZ_OAUTH_USERINFO_URL,
+      authUrl: POSTYS_OAUTH_AUTH_URL,
+      clientId: POSTYS_OAUTH_CLIENT_ID,
+      clientSecret: POSTYS_OAUTH_CLIENT_SECRET,
+      tokenUrl: POSTYS_OAUTH_TOKEN_URL,
+      userInfoUrl: POSTYS_OAUTH_USERINFO_URL,
       frontendUrl: FRONTEND_URL,
     };
   }

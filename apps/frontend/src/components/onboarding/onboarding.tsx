@@ -2,9 +2,9 @@
 
 import { FC, useCallback, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { OnboardingModal } from '@gitroom/frontend/components/onboarding/onboarding.modal';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { OnboardingModal } from '@postys/frontend/components/onboarding/onboarding.modal';
 
 export const Onboarding: FC = () => {
   const query = useSearchParams();
@@ -32,7 +32,7 @@ export const Onboarding: FC = () => {
     }
     modalOpen.current = true;
     modal.openModal({
-      // title: t('onboarding', 'Welcome to Postiz'),
+      // title: t('onboarding', 'Welcome to Postys'),
       withCloseButton: true,
       closeOnEscape: false,
       removeLayout: true,

@@ -1,5 +1,5 @@
 {
-  "name": "gitroom",
+  "name": "postys",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -42,7 +42,8 @@
     "test": "jest --coverage --detectOpenHandles --reporters=default --reporters=jest-junit"
   },
   "dependencies": {
-    "@ag-ui/mastra": "0.2.0",
+    "@ag-ui/mastra": "1.0.0",
+    "@ai-sdk/anthropic": "^3.0.58",
     "@ai-sdk/openai": "^2.0.52",
     "@atproto/api": "^0.15.15",
     "@aws-sdk/client-s3": "^3.787.0",
@@ -62,9 +63,10 @@
     "@mantine/dates": "^5.10.5",
     "@mantine/hooks": "^5.10.5",
     "@mantine/modals": "^5.10.5",
-    "@mastra/core": "^0.20.2",
-    "@mastra/memory": "^0.15.6",
-    "@mastra/pg": "^0.17.2",
+    "@mastra/core": "^1.9.0",
+    "@mastra/mcp": "^1.0.3",
+    "@mastra/memory": "^1.6.0",
+    "@mastra/pg": "^1.7.1",
     "@modelcontextprotocol/sdk": "^1.22.0",
     "@nest-lab/throttler-storage-redis": "^1.2.0",
     "@nestjs/cli": "10.0.2",

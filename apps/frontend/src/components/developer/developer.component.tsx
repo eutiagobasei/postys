@@ -1,14 +1,14 @@
 'use client';
 
 import { FC, useCallback, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
 import useSWR from 'swr';
-import { Button } from '@gitroom/react/form/button';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useDecisionModal, useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { MediaBox } from '@gitroom/frontend/components/media/media.component';
+import { Button } from '@postys/react/form/button';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useDecisionModal, useModals } from '@postys/frontend/components/layout/new-modal';
+import { MediaBox } from '@postys/frontend/components/media/media.component';
 import copy from 'copy-to-clipboard';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 
 const useOAuthApp = () => {
   const fetch = useFetch();
@@ -195,12 +195,12 @@ export const DeveloperComponent: FC = () => {
           <div className="text-customColor18 mt-[4px]">
             {t(
               'create_an_oauth_application',
-              'Create an OAuth application to allow third-party integrations with Postiz on behalf of your users.'
+              'Create an OAuth application to allow third-party integrations with Postys on behalf of your users.'
             )}
             <br />
             <a
               className="underline hover:font-bold hover:underline"
-              href="https://docs.postiz.com/public-api/oauth"
+              href="https://docs.postys.io/public-api/oauth"
               target="_blank"
             >
               {t(
@@ -313,7 +313,7 @@ export const DeveloperComponent: FC = () => {
           <br />
           <a
             className="underline hover:font-bold hover:underline"
-            href="https://docs.postiz.com/public-api/oauth"
+            href="https://docs.postys.io/public-api/oauth"
             target="_blank"
           >
             {t(

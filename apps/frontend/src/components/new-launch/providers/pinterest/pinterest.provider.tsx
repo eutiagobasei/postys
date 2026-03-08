@@ -4,13 +4,13 @@ import { FC } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { PinterestBoard } from '@gitroom/frontend/components/new-launch/providers/pinterest/pinterest.board';
-import { PinterestSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/pinterest.dto';
-import { Input } from '@gitroom/react/form/input';
-import { ColorPicker } from '@gitroom/react/form/color.picker';
-import { PinterestPreview } from '@gitroom/frontend/components/new-launch/providers/pinterest/pinterest.preview';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { PinterestBoard } from '@postys/frontend/components/new-launch/providers/pinterest/pinterest.board';
+import { PinterestSettingsDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/pinterest.dto';
+import { Input } from '@postys/react/form/input';
+import { ColorPicker } from '@postys/react/form/color.picker';
+import { PinterestPreview } from '@postys/frontend/components/new-launch/providers/pinterest/pinterest.preview';
 const PinterestSettings: FC = () => {
   const { register, control } = useSettings();
   return (

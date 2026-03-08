@@ -62,6 +62,11 @@ const nextConfig = {
             ? '/api/uploads/:path*'
             : '/404',
       },
+      // Proxy API calls to backend - enables ngrok HTTPS to work with local backend
+      {
+        source: '/copilot/:path*',
+        destination: `${process.env.BACKEND_INTERNAL_URL || 'http://localhost:3000'}/copilot/:path*`,
+      },
     ];
   },
 };

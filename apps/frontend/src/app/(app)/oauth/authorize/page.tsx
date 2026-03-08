@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { Logo } from '@gitroom/frontend/components/new-layout/logo';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { Logo } from '@postys/frontend/components/new-layout/logo';
 
 export default function OAuthAuthorizePage() {
   const searchParams = useSearchParams();
@@ -175,7 +175,7 @@ export default function OAuthAuthorizePage() {
 
           <div className="border-t border-[#2A2929] pt-[16px]">
             <div className="text-[14px] text-gray-400 mb-[12px]">
-              This application is requesting access to your Postiz account. It
+              This application is requesting access to your Postys account. It
               will be able to:
             </div>
             <ul className="text-[14px] list-disc list-inside space-y-[4px]">

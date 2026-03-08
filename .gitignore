@@ -58,3 +58,17 @@ Thumbs.db
 .secrets/
 libraries/plugins/src/plugins.ts
 i18n.cache
+.env.bak
+
+# Logs
+*.log
+backend.log
+frontend.log
+orchestrator.log
+
+# Backup files
+*.bak
+.env.bak
+
+# Undefined uploads
+apps/backend/undefined/

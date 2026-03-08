@@ -1,17 +1,18 @@
-import { AgentToolInterface } from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+import { AgentToolInterface } from '@postys/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { z } from 'zod';
 import { Injectable } from '@nestjs/common';
-import { socialIntegrationList } from '@gitroom/nestjs-libraries/integrations/integration.manager';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
-import { PostsService } from '@gitroom/nestjs-libraries/database/prisma/posts/posts.service';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
-import { AllProvidersSettings } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
+import { socialIntegrationList } from '@postys/nestjs-libraries/integrations/integration.manager';
+import { IntegrationService } from '@postys/nestjs-libraries/database/prisma/integrations/integration.service';
+import { PostsService } from '@postys/nestjs-libraries/database/prisma/posts/posts.service';
+import { makeId } from '@postys/nestjs-libraries/services/make.is';
+import { AllProvidersSettings } from '@postys/nestjs-libraries/dtos/posts/providers-settings/all.providers.settings';
 import { validate } from 'class-validator';
 import { Integration } from '@prisma/client';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { weightedLength } from '@gitroom/helpers/utils/count.length';
+import { checkAuth } from '@postys/nestjs-libraries/chat/auth.context';
+import { stripHtmlValidation } from '@postys/helpers/utils/strip.html.validation';
+import { weightedLength } from '@postys/helpers/utils/count.length';
+import dayjs from 'dayjs';
 
 function countCharacters(text: string, type: string): number {
   if (type !== 'x') {
@@ -114,17 +115,31 @@ If the tools return errors, you would need to rerun it with the right parameters
           )
           .or(z.object({ errors: z.string() })),
       }),
-      execute: async (args, options) => {
-        const { context, runtimeContext } = args;
-        checkAuth(args, options);
+      execute: async (inputData, context) => {
+        checkAuth(inputData, context);
         const organizationId = JSON.parse(
-          // @ts-ignore
-          runtimeContext.get('organization') as string
+          (context.requestContext as any)?.get('organization') || '{}'
         ).id;
         const finalOutput = [];
 
+        // Validate that all scheduled dates are in the future
+        const now = dayjs();
+        for (const post of inputData.socialPost) {
+          if (post.type === 'schedule') {
+            const scheduledDate = dayjs(post.date);
+            if (scheduledDate.isBefore(now)) {
+              // Auto-adjust to next available time (5 minutes from now minimum)
+              const adjustedDate = now.add(5, 'minute');
+              post.date = adjustedDate.toISOString();
+            }
+          } else if (post.type === 'now') {
+            // For "now" type, always use current time + 1 minute
+            post.date = now.add(1, 'minute').toISOString();
+          }
+        }
+
         const integrations = {} as Record<string, Integration>;
-        for (const platform of context.socialPost) {
+        for (const platform of inputData.socialPost) {
           integrations[platform.integrationId] =
             await this._integrationService.getIntegrationById(
               organizationId,
@@ -180,7 +195,7 @@ If the tools return errors, you would need to rerun it with the right parameters
           }
         }
 
-        for (const post of context.socialPost) {
+        for (const post of inputData.socialPost) {
           const integration = integrations[post.integrationId];
 
           if (!integration) {

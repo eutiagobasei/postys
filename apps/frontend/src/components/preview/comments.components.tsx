@@ -1,12 +1,12 @@
 'use client';
 
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { Button } from '@gitroom/react/form/button';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { Button } from '@postys/react/form/button';
 import { FC, useCallback, useMemo, useState } from 'react';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
 import useSWR from 'swr';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 export const RenderComponents: FC<{
   postId: string;
 }> = (props) => {

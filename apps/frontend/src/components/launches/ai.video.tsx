@@ -1,17 +1,17 @@
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postys/react/form/button';
 import React, { FC, useCallback, useState } from 'react';
 import clsx from 'clsx';
 import Loading from 'react-loading';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { useLaunchStore } from '@postys/frontend/components/new-launch/store';
 import useSWR from 'swr';
-import { TopTitle } from '@gitroom/frontend/components/launches/helpers/top.title.component';
-import { VideoWrapper } from '@gitroom/frontend/components/videos/video.render.component';
+import { TopTitle } from '@postys/frontend/components/launches/helpers/top.title.component';
+import { VideoWrapper } from '@postys/frontend/components/videos/video.render.component';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { VideoContextWrapper } from '@gitroom/frontend/components/videos/video.context.wrapper';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { VideoContextWrapper } from '@postys/frontend/components/videos/video.context.wrapper';
+import { useToaster } from '@postys/react/toaster/toaster';
 
 export const Modal: FC<{
   close: () => void;

@@ -1,10 +1,10 @@
 import { INestApplication } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { MastraService } from '@gitroom/nestjs-libraries/chat/mastra.service';
+import { MastraService } from '@postys/nestjs-libraries/chat/mastra.service';
 import { MCPServer } from '@mastra/mcp';
 import { randomUUID } from 'crypto';
-import { OrganizationService } from '@gitroom/nestjs-libraries/database/prisma/organizations/organization.service';
-import { OAuthService } from '@gitroom/nestjs-libraries/database/prisma/oauth/oauth.service';
+import { OrganizationService } from '@postys/nestjs-libraries/database/prisma/organizations/organization.service';
+import { OAuthService } from '@postys/nestjs-libraries/database/prisma/oauth/oauth.service';
 import { runWithContext } from './async.storage';
 export const startMcp = async (app: INestApplication) => {
   const mastraService = app.get(MastraService, { strict: false });
@@ -21,14 +21,14 @@ export const startMcp = async (app: INestApplication) => {
   };
 
   const mastra = await mastraService.mastra();
-  const agent = mastra.getAgent('postiz');
-  const tools = await agent.getTools();
+  const agent = mastra.getAgent('postys');
+  const tools = (agent as any).tools || {};
 
   const serverConfig = {
-    name: 'Postiz MCP',
+    name: 'Postys MCP',
     version: '1.0.0',
     tools,
-    agents: { postiz: agent },
+    agents: { postys: agent },
   };
 
   const server = new MCPServer(serverConfig);

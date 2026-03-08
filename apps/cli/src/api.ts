@@ -1,17 +1,17 @@
 import fetch, { FormData } from 'node-fetch';
 
-export interface PostizConfig {
+export interface PostysConfig {
   apiKey: string;
   apiUrl?: string;
 }
 
-export class PostizAPI {
+export class PostysAPI {
   private apiKey: string;
   private apiUrl: string;
 
-  constructor(config: PostizConfig) {
+  constructor(config: PostysConfig) {
     this.apiKey = config.apiKey;
-    this.apiUrl = config.apiUrl || 'https://api.postiz.com';
+    this.apiUrl = config.apiUrl || 'https://api.postys.io';
   }
 
   private async request(endpoint: string, options: any = {}) {

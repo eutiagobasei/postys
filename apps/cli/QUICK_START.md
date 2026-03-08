@@ -1,4 +1,4 @@
-# Postiz CLI - Quick Start Guide
+# Postys CLI - Quick Start Guide
 
 ## Installation
 
@@ -6,7 +6,7 @@
 
 ```bash
 # Navigate to the monorepo root
-cd /path/to/gitroom
+cd /path/to/postys
 
 # Install dependencies
 pnpm install
@@ -27,25 +27,25 @@ cd apps/cli
 # Link globally
 pnpm link --global
 
-# Now you can use 'postiz' anywhere
-postiz --help
+# Now you can use 'postys' anywhere
+postys --help
 ```
 
 ### From npm (Coming Soon)
 
 ```bash
 # Once published
-npm install -g postiz
+npm install -g postys
 
 # Or with pnpm
-pnpm add -g postiz
+pnpm add -g postys
 ```
 
 ## Setup
 
 ### 1. Get Your API Key
 
-1. Log in to your Postiz account at https://postiz.com
+1. Log in to your Postys account at https://postys.io
 2. Navigate to Settings → API Keys
 3. Generate a new API key
 
@@ -53,27 +53,27 @@ pnpm add -g postiz
 
 ```bash
 # Bash/Zsh
-export POSTIZ_API_KEY=your_api_key_here
+export POSTYS_API_KEY=your_api_key_here
 
 # Fish
-set -x POSTIZ_API_KEY your_api_key_here
+set -x POSTYS_API_KEY your_api_key_here
 
 # PowerShell
-$env:POSTIZ_API_KEY="your_api_key_here"
+$env:POSTYS_API_KEY="your_api_key_here"
 ```
 
 To make it permanent, add it to your shell profile:
 
 ```bash
 # ~/.bashrc or ~/.zshrc
-echo 'export POSTIZ_API_KEY=your_api_key_here' >> ~/.bashrc
+echo 'export POSTYS_API_KEY=your_api_key_here' >> ~/.bashrc
 source ~/.bashrc
 ```
 
 ### 3. Verify Installation
 
 ```bash
-postiz --help
+postys --help
 ```
 
 ## Basic Commands
@@ -82,23 +82,23 @@ postiz --help
 
 ```bash
 # Simple post
-postiz posts:create -c "Hello World!" -i "twitter-123"
+postys posts:create -c "Hello World!" -i "twitter-123"
 
 # Post with multiple images
-postiz posts:create \
+postys posts:create \
   -c "Check these out!" \
   -m "img1.jpg,img2.jpg" \
   -i "twitter-123"
 
 # Post with comments (each can have different media!)
-postiz posts:create \
+postys posts:create \
   -c "Main post" -m "main.jpg" \
   -c "First comment" -m "comment1.jpg" \
   -c "Second comment" -m "comment2.jpg" \
   -i "twitter-123"
 
 # Scheduled post
-postiz posts:create \
+postys posts:create \
   -c "Future post" \
   -s "2024-12-31T12:00:00Z" \
   -i "twitter-123"
@@ -108,31 +108,31 @@ postiz posts:create \
 
 ```bash
 # List all posts
-postiz posts:list
+postys posts:list
 
 # With pagination
-postiz posts:list -p 2 -l 20
+postys posts:list -p 2 -l 20
 
 # Search
-postiz posts:list -s "keyword"
+postys posts:list -s "keyword"
 ```
 
 ### Delete a Post
 
 ```bash
-postiz posts:delete abc123xyz
+postys posts:delete abc123xyz
 ```
 
 ### List Integrations
 
 ```bash
-postiz integrations:list
+postys integrations:list
 ```
 
 ### Upload Media
 
 ```bash
-postiz upload ./path/to/image.png
+postys upload ./path/to/image.png
 ```
 
 ## Common Workflows
@@ -141,7 +141,7 @@ postiz upload ./path/to/image.png
 
 ```bash
 # See all your connected social media accounts
-postiz integrations:list
+postys integrations:list
 ```
 
 The output will show integration IDs like:
@@ -156,7 +156,7 @@ The output will show integration IDs like:
 
 ```bash
 # Use the integration IDs from step 1
-postiz posts:create \
+postys posts:create \
   -c "Posting to multiple platforms!" \
   -i "twitter-123,linkedin-456,facebook-789"
 ```
@@ -165,23 +165,23 @@ postiz posts:create \
 
 ```bash
 # Morning post
-postiz posts:create -c "Good morning!" -s "2024-01-15T09:00:00Z"
+postys posts:create -c "Good morning!" -s "2024-01-15T09:00:00Z"
 
 # Afternoon post
-postiz posts:create -c "Lunch time update!" -s "2024-01-15T12:00:00Z"
+postys posts:create -c "Lunch time update!" -s "2024-01-15T12:00:00Z"
 
 # Evening post
-postiz posts:create -c "Good night!" -s "2024-01-15T20:00:00Z"
+postys posts:create -c "Good night!" -s "2024-01-15T20:00:00Z"
 ```
 
 ### 4. Upload and Post Image
 
 ```bash
 # First upload the image
-postiz upload ./my-image.png
+postys upload ./my-image.png
 
 # Copy the URL from the response, then create post
-postiz posts:create -c "Check out this image!" --image "url-from-upload"
+postys posts:create -c "Check out this image!" --image "url-from-upload"
 ```
 
 ## Tips & Tricks
@@ -190,10 +190,10 @@ postiz posts:create -c "Check out this image!" --image "url-from-upload"
 
 ```bash
 # Get just the post IDs
-postiz posts:list | jq '.[] | .id'
+postys posts:list | jq '.[] | .id'
 
 # Get integration names
-postiz integrations:list | jq '.[] | .provider'
+postys integrations:list | jq '.[] | .provider'
 ```
 
 ### Script Automation
@@ -203,7 +203,7 @@ postiz integrations:list | jq '.[] | .provider'
 # Create a batch of posts
 
 for hour in 09 12 15 18; do
-  postiz posts:create \
+  postys posts:create \
     -c "Automated post at ${hour}:00" \
     -s "2024-01-15T${hour}:00:00Z"
   echo "Created post for ${hour}:00"
@@ -214,10 +214,10 @@ done
 
 ```bash
 # Custom API endpoint (for self-hosted)
-export POSTIZ_API_URL=https://your-instance.com
+export POSTYS_API_URL=https://your-instance.com
 
 # Use the CLI with custom endpoint
-postiz posts:list
+postys posts:list
 ```
 
 ## Troubleshooting
@@ -225,18 +225,18 @@ postiz posts:list
 ### API Key Not Set
 
 ```
-❌ Error: POSTIZ_API_KEY environment variable is required
+❌ Error: POSTYS_API_KEY environment variable is required
 ```
 
 **Solution:** Set the environment variable:
 ```bash
-export POSTIZ_API_KEY=your_key
+export POSTYS_API_KEY=your_key
 ```
 
 ### Command Not Found
 
 ```
-postiz: command not found
+postys: command not found
 ```
 
 **Solution:** Either:
@@ -262,12 +262,12 @@ postiz: command not found
 
 ```bash
 # General help
-postiz --help
+postys --help
 
 # Command-specific help
-postiz posts:create --help
-postiz posts:list --help
-postiz posts:delete --help
+postys posts:create --help
+postys posts:list --help
+postys posts:delete --help
 ```
 
 ## Next Steps
@@ -278,7 +278,7 @@ postiz posts:delete --help
 
 ## Links
 
-- [Postiz Website](https://postiz.com)
-- [API Documentation](https://postiz.com/api-docs)
-- [GitHub Repository](https://github.com/gitroomhq/postiz-app)
-- [Report Issues](https://github.com/gitroomhq/postiz-app/issues)
+- [Postys Website](https://postys.io)
+- [API Documentation](https://postys.io/api-docs)
+- [GitHub Repository](https://github.com/postyshq/postys-app)
+- [Report Issues](https://github.com/postyshq/postys-app/issues)

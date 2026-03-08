@@ -1,6 +1,6 @@
 {
-	"name": "Postiz Dev Container",
-	"image": "localhost/postiz-devcontainer",
+	"name": "Postys Dev Container",
+	"image": "localhost/postys-devcontainer",
 	"features": {},
 	"customizations": {
 		"vscode": {

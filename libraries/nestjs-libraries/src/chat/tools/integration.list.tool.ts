@@ -1,13 +1,13 @@
 import {
   AgentToolInterface,
   ToolReturn,
-} from '@gitroom/nestjs-libraries/chat/agent.tool.interface';
+} from '@postys/nestjs-libraries/chat/agent.tool.interface';
 import { createTool } from '@mastra/core/tools';
 import { Injectable } from '@nestjs/common';
-import { IntegrationService } from '@gitroom/nestjs-libraries/database/prisma/integrations/integration.service';
+import { IntegrationService } from '@postys/nestjs-libraries/database/prisma/integrations/integration.service';
 import z from 'zod';
-import { checkAuth } from '@gitroom/nestjs-libraries/chat/auth.context';
-import { getAuth } from '@gitroom/nestjs-libraries/chat/async.storage';
+import { checkAuth } from '@postys/nestjs-libraries/chat/auth.context';
+import { getAuth } from '@postys/nestjs-libraries/chat/async.storage';
 
 @Injectable()
 export class IntegrationListTool implements AgentToolInterface {
@@ -28,14 +28,12 @@ export class IntegrationListTool implements AgentToolInterface {
           })
         ),
       }),
-      execute: async (args, options) => {
+      execute: async (inputData, context) => {
         console.log(getAuth());
-        console.log(options);
-        const { context, runtimeContext } = args;
-        checkAuth(args, options);
+        console.log(context);
+        checkAuth(inputData, context);
         const organizationId = JSON.parse(
-          // @ts-ignore
-          runtimeContext.get('organization') as string
+          (context.requestContext as any)?.get('organization') || '{}'
         ).id;
 
         return {

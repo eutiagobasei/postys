@@ -3,18 +3,18 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
-import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
+} from '@postys/nestjs-libraries/integrations/social/social.integrations.interface';
+import { makeId } from '@postys/nestjs-libraries/services/make.is';
 import sharp from 'sharp';
 import { lookup } from 'mime-types';
-import { readOrFetch } from '@gitroom/helpers/utils/read.or.fetch';
-import { SocialAbstract } from '@gitroom/nestjs-libraries/integrations/social.abstract';
+import { readOrFetch } from '@postys/helpers/utils/read.or.fetch';
+import { SocialAbstract } from '@postys/nestjs-libraries/integrations/social.abstract';
 import { Integration } from '@prisma/client';
-import { PostPlug } from '@gitroom/helpers/decorators/post.plug';
-import { LinkedinDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/linkedin.dto';
+import { PostPlug } from '@postys/helpers/decorators/post.plug';
+import { LinkedinDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/linkedin.dto';
 import imageToPDF from 'image-to-pdf';
 import { Readable } from 'stream';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
+import { Rules } from '@postys/nestjs-libraries/chat/rules.description.decorator';
 
 @Rules(
   'LinkedIn can have maximum one attachment when selecting video, when choosing a carousel on LinkedIn minimum amount of attachment must be two, and only pictures, if uploading a video, LinkedIn can have only one attachment'
@@ -28,11 +28,8 @@ export class LinkedinProvider extends SocialAbstract implements SocialProvider {
   scopes = [
     'openid',
     'profile',
+    'email',
     'w_member_social',
-    'r_basicprofile',
-    'rw_organization_admin',
-    'w_organization_social',
-    'r_organization_social',
   ];
   override maxConcurrentJob = 2; // LinkedIn has professional posting limits
   refreshWait = true;

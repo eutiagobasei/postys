@@ -1,20 +1,20 @@
-import { internalFetch } from '@gitroom/helpers/utils/internal.fetch';
+import { internalFetch } from '@postys/helpers/utils/internal.fetch';
 export const dynamic = 'force-dynamic';
 import { Metadata } from 'next';
-import { isGeneralServerSide } from '@gitroom/helpers/utils/is.general.server.side';
+import { isGeneralServerSide } from '@postys/helpers/utils/is.general.server.side';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CommentsComponents } from '@gitroom/frontend/components/preview/comments.components';
+import { CommentsComponents } from '@postys/frontend/components/preview/comments.components';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { VideoOrImage } from '@gitroom/react/helpers/video.or.image';
-import { CopyClient } from '@gitroom/frontend/components/preview/copy.client';
-import { getT } from '@gitroom/react/translation/get.translation.service.backend';
+import { VideoOrImage } from '@postys/react/helpers/video.or.image';
+import { CopyClient } from '@postys/frontend/components/preview/copy.client';
+import { getT } from '@postys/react/translation/get.translation.service.backend';
 import dynamicLoad from 'next/dynamic';
 
 const RenderPreviewDate = dynamicLoad(
   () =>
-    import('@gitroom/frontend/components/preview/render.preview.date').then(
+    import('@postys/frontend/components/preview/render.preview.date').then(
       (mod) => mod.RenderPreviewDate
     ),
   { ssr: false }
@@ -22,7 +22,7 @@ const RenderPreviewDate = dynamicLoad(
 
 dayjs.extend(utc);
 export const metadata: Metadata = {
-  title: `${isGeneralServerSide() ? 'Postiz' : 'Gitroom'} Preview`,
+  title: `${isGeneralServerSide() ? 'Postys' : 'Postys'} Preview`,
   description: '',
 };
 export default async function Auth({
@@ -58,7 +58,7 @@ export default async function Auth({
                 >
                   <div className="max-w-[55px]">
                     <Image
-                      src={'/postiz.svg'}
+                      src={'/postys.svg'}
                       width={55}
                       height={55}
                       alt="Logo"

@@ -10,26 +10,26 @@ import React, {
   useState,
 } from 'react';
 import { useClickOutside } from '@mantine/hooks';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
-import { TimeTable } from '@gitroom/frontend/components/launches/time.table';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
+import { deleteDialog } from '@postys/react/helpers/delete.dialog';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
+import { TimeTable } from '@postys/frontend/components/launches/time.table';
 import {
   Integrations,
   useCalendar,
-} from '@gitroom/frontend/components/launches/calendar.context';
-import { BotPicture } from '@gitroom/frontend/components/launches/bot.picture';
-import { CustomerModal } from '@gitroom/frontend/components/launches/customer.modal';
+} from '@postys/frontend/components/launches/calendar.context';
+import { BotPicture } from '@postys/frontend/components/launches/bot.picture';
+import { CustomerModal } from '@postys/frontend/components/launches/customer.modal';
 import { Integration } from '@prisma/client';
-import { SettingsModal } from '@gitroom/frontend/components/launches/settings.modal';
-import { CustomVariables } from '@gitroom/frontend/components/launches/add.provider.component';
+import { SettingsModal } from '@postys/frontend/components/launches/settings.modal';
+import { CustomVariables } from '@postys/frontend/components/launches/add.provider.component';
 import { useRouter } from 'next/navigation';
-import { useVariables } from '@gitroom/react/helpers/variable.context';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { AddEditModal } from '@gitroom/frontend/components/new-launch/add.edit.modal';
+import { useVariables } from '@postys/react/helpers/variable.context';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { AddEditModal } from '@postys/frontend/components/new-launch/add.edit.modal';
 import dayjs from 'dayjs';
-import { ModalWrapperComponent } from '@gitroom/frontend/components/new-launch/modal.wrapper.component';
+import { ModalWrapperComponent } from '@postys/frontend/components/new-launch/modal.wrapper.component';
 import copy from 'copy-to-clipboard';
 
 export const Menu: FC<{

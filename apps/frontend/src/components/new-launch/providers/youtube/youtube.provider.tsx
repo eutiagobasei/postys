@@ -4,14 +4,14 @@ import { FC } from 'react';
 import {
   PostComment,
   withProvider,
-} from '@gitroom/frontend/components/new-launch/providers/high.order.provider';
-import { YoutubeSettingsDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/youtube.settings.dto';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
-import { Input } from '@gitroom/react/form/input';
-import { MediumTags } from '@gitroom/frontend/components/new-launch/providers/medium/medium.tags';
-import { MediaComponent } from '@gitroom/frontend/components/media/media.component';
-import { Select } from '@gitroom/react/form/select';
-import { YoutubePreview } from '@gitroom/frontend/components/new-launch/providers/youtube/youtube.preview';
+} from '@postys/frontend/components/new-launch/providers/high.order.provider';
+import { YoutubeSettingsDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/youtube.settings.dto';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
+import { Input } from '@postys/react/form/input';
+import { MediumTags } from '@postys/frontend/components/new-launch/providers/medium/medium.tags';
+import { MediaComponent } from '@postys/frontend/components/media/media.component';
+import { Select } from '@postys/react/form/select';
+import { YoutubePreview } from '@postys/frontend/components/new-launch/providers/youtube/youtube.preview';
 const type = [
   {
     label: 'Public',

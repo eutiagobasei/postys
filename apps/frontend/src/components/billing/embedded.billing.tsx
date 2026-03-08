@@ -9,13 +9,13 @@ import {
   CheckoutProvider,
   useCheckout,
 } from '@stripe/react-stripe-js/checkout';
-import { modeEmitter } from '@gitroom/frontend/components/layout/mode.component';
+import { modeEmitter } from '@postys/frontend/components/layout/mode.component';
 import useCookie from 'react-use-cookie';
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postys/react/form/button';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import { useToaster } from '@gitroom/react/toaster/toaster';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
+import { useToaster } from '@postys/react/toaster/toaster';
+import { useT } from '@postys/react/translation/get.transation.service.client';
 
 export const EmbeddedBilling: FC<{
   stripe: Promise<Stripe>;

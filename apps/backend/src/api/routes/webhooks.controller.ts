@@ -8,16 +8,16 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { GetOrgFromRequest } from '@gitroom/nestjs-libraries/user/org.from.request';
+import { GetOrgFromRequest } from '@postys/nestjs-libraries/user/org.from.request';
 import { Organization } from '@prisma/client';
 import { ApiTags } from '@nestjs/swagger';
-import { WebhooksService } from '@gitroom/nestjs-libraries/database/prisma/webhooks/webhooks.service';
-import { CheckPolicies } from '@gitroom/backend/services/auth/permissions/permissions.ability';
+import { WebhooksService } from '@postys/nestjs-libraries/database/prisma/webhooks/webhooks.service';
+import { CheckPolicies } from '@postys/backend/services/auth/permissions/permissions.ability';
 import {
   UpdateDto,
   WebhooksDto,
-} from '@gitroom/nestjs-libraries/dtos/webhooks/webhooks.dto';
-import { AuthorizationActions, Sections } from '@gitroom/backend/services/auth/permissions/permission.exception.class';
+} from '@postys/nestjs-libraries/dtos/webhooks/webhooks.dto';
+import { AuthorizationActions, Sections } from '@postys/backend/services/auth/permissions/permission.exception.class';
 
 @ApiTags('Webhooks')
 @Controller('/webhooks')

@@ -1,37 +1,37 @@
 # Do **not** use this yml for production. It is not up-to-date.
-# Use https://docs.postiz.com/installation/docker-compose
+# Use https://docs.postys.io/installation/docker-compose
 # This is only for the dev enviroment
 
 services:
-  postiz-postgres:
+  postys-postgres:
     # ref: https://hub.docker.com/_/postgres
     image: postgres:17-alpine # 17.0
-    container_name: postiz-postgres
+    container_name: postys-postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: postiz-local-pwd
-      POSTGRES_USER: postiz-local
-      POSTGRES_DB: postiz-db-local
+      POSTGRES_PASSWORD: postys-local-pwd
+      POSTGRES_USER: postys-local
+      POSTGRES_DB: postys-db-local
       TEMPORAL_ADDRESS: "temporal:7233"
     volumes:
       - postgres-volume:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5437:5432
     networks:
-      - postiz-network
-  postiz-redis:
+      - postys-network
+  postys-redis:
     # ref: https://hub.docker.com/_/redis
     image: redis:7-alpine # 7.4.0
-    container_name: postiz-redis
+    container_name: postys-redis
     restart: always
     ports:
-      - 6379:6379
+      - 6383:6379
     networks:
-      - postiz-network
-  postiz-pg-admin:
+      - postys-network
+  postys-pg-admin:
     # ref: https://hub.docker.com/r/dpage/pgadmin4/tags
     image: dpage/pgadmin4:latest
-    container_name: postiz-pg-admin
+    container_name: postys-pg-admin
     restart: always
     ports:
       - 8081:80
@@ -39,19 +39,19 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
     networks:
-      - postiz-network
-  postiz-redisinsight:
+      - postys-network
+  postys-redisinsight:
     # ref: https://hub.docker.com/r/redis/redisinsight
     image: redis/redisinsight:latest
-    container_name: postiz-redisinsight
+    container_name: postys-redisinsight
     links:
-      - postiz-redis
+      - postys-redis
     ports:
       - '5540:5540'
     volumes:
       - redisinsight:/data
     networks:
-      - postiz-network
+      - postys-network
     restart: always
 
   temporal-elasticsearch:
@@ -133,7 +133,7 @@ services:
     networks:
       - temporal-network
     ports:
-      - "8080:8080"
+      - "8082:8080"
 
 volumes:
   redisinsight:
@@ -141,7 +141,7 @@ volumes:
     external: false
 
 networks:
-  postiz-network:
+  postys-network:
     external: false
   temporal-network:
     driver: bridge

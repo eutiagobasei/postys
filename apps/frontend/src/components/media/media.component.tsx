@@ -11,28 +11,28 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { Button } from '@gitroom/react/form/button';
+import { Button } from '@postys/react/form/button';
 import useSWR from 'swr';
-import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
+import { useFetch } from '@postys/helpers/utils/custom.fetch';
 import { Media } from '@prisma/client';
-import { useMediaDirectory } from '@gitroom/react/helpers/use.media.directory';
-import { useSettings } from '@gitroom/frontend/components/launches/helpers/use.values';
+import { useMediaDirectory } from '@postys/react/helpers/use.media.directory';
+import { useSettings } from '@postys/frontend/components/launches/helpers/use.values';
 import EventEmitter from 'events';
-import { useToaster } from '@gitroom/react/toaster/toaster';
+import { useToaster } from '@postys/react/toaster/toaster';
 import clsx from 'clsx';
-import { VideoFrame } from '@gitroom/react/helpers/video.frame';
-import { useUppyUploader } from '@gitroom/frontend/components/media/new.uploader';
+import { VideoFrame } from '@postys/react/helpers/video.frame';
+import { useUppyUploader } from '@postys/frontend/components/media/new.uploader';
 import dynamic from 'next/dynamic';
-import { useUser } from '@gitroom/frontend/components/layout/user.context';
-import { AiImage } from '@gitroom/frontend/components/launches/ai.image';
-import { DropFiles } from '@gitroom/frontend/components/layout/drop.files';
-import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
-import { useT } from '@gitroom/react/translation/get.transation.service.client';
-import { ThirdPartyMedia } from '@gitroom/frontend/components/third-parties/third-party.media';
+import { useUser } from '@postys/frontend/components/layout/user.context';
+import { AiImage } from '@postys/frontend/components/launches/ai.image';
+import { DropFiles } from '@postys/frontend/components/layout/drop.files';
+import { deleteDialog } from '@postys/react/helpers/delete.dialog';
+import { useT } from '@postys/react/translation/get.transation.service.client';
+import { ThirdPartyMedia } from '@postys/frontend/components/third-parties/third-party.media';
 import { ReactSortable } from 'react-sortablejs';
-import { MediaComponentInner } from '@gitroom/frontend/components/launches/helpers/media.settings.component';
-import { AiVideo } from '@gitroom/frontend/components/launches/ai.video';
-import { useModals } from '@gitroom/frontend/components/layout/new-modal';
+import { MediaComponentInner } from '@postys/frontend/components/launches/helpers/media.settings.component';
+import { AiVideo } from '@postys/frontend/components/launches/ai.video';
+import { useModals } from '@postys/frontend/components/layout/new-modal';
 import { Dashboard } from '@uppy/react';
 import {
   ChevronLeftIcon,
@@ -46,12 +46,12 @@ import {
   DesignMediaIcon,
   VerticalDividerIcon,
   NoMediaIcon,
-} from '@gitroom/frontend/components/ui/icons';
-import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
+} from '@postys/frontend/components/ui/icons';
+import { useLaunchStore } from '@postys/frontend/components/new-launch/store';
 import { useShallow } from 'zustand/react/shallow';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
+import { LoadingComponent } from '@postys/frontend/components/layout/loading';
 const Polonto = dynamic(
-  () => import('@gitroom/frontend/components/launches/polonto')
+  () => import('@postys/frontend/components/launches/polonto')
 );
 const showModalEmitter = new EventEmitter();
 export const Pagination: FC<{

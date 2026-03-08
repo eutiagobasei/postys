@@ -5,20 +5,20 @@ import {
   PostDetails,
   PostResponse,
   SocialProvider,
-} from '@gitroom/nestjs-libraries/integrations/social/social.integrations.interface';
+} from '@postys/nestjs-libraries/integrations/social/social.integrations.interface';
 import { lookup } from 'mime-types';
 import sharp from 'sharp';
-import { readOrFetch } from '@gitroom/helpers/utils/read.or.fetch';
-import { SocialAbstract } from '@gitroom/nestjs-libraries/integrations/social.abstract';
-import { Plug } from '@gitroom/helpers/decorators/plug.decorator';
+import { readOrFetch } from '@postys/helpers/utils/read.or.fetch';
+import { SocialAbstract } from '@postys/nestjs-libraries/integrations/social.abstract';
+import { Plug } from '@postys/helpers/decorators/plug.decorator';
 import { Integration } from '@prisma/client';
-import { timer } from '@gitroom/helpers/utils/timer';
-import { PostPlug } from '@gitroom/helpers/decorators/post.plug';
+import { timer } from '@postys/helpers/utils/timer';
+import { PostPlug } from '@postys/helpers/decorators/post.plug';
 import dayjs from 'dayjs';
 import { uniqBy } from 'lodash';
-import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
-import { XDto } from '@gitroom/nestjs-libraries/dtos/posts/providers-settings/x.dto';
-import { Rules } from '@gitroom/nestjs-libraries/chat/rules.description.decorator';
+import { stripHtmlValidation } from '@postys/helpers/utils/strip.html.validation';
+import { XDto } from '@postys/nestjs-libraries/dtos/posts/providers-settings/x.dto';
+import { Rules } from '@postys/nestjs-libraries/chat/rules.description.decorator';
 
 @Rules(
   'X can have maximum 4 pictures, or maximum one video, it can also be without attachments'

@@ -25,14 +25,14 @@
     "noFallthroughCasesInSwitch": true,
     "strict": true,
     "paths": {
-      "@gitroom/backend/*": ["apps/backend/src/*"],
-      "@gitroom/frontend/*": ["apps/frontend/src/*"],
-      "@gitroom/helpers/*": ["libraries/helpers/src/*"],
-      "@gitroom/nestjs-libraries/*": ["libraries/nestjs-libraries/src/*"],
-      "@gitroom/react/*": ["libraries/react-shared-libraries/src/*"],
-      "@gitroom/plugins/*": ["libraries/plugins/src/*"],
-      "@gitroom/orchestrator/*": ["apps/orchestrator/src/*"],
-      "@gitroom/extension/*": ["apps/extension/src/*"]
+      "@postys/backend/*": ["apps/backend/src/*"],
+      "@postys/frontend/*": ["apps/frontend/src/*"],
+      "@postys/helpers/*": ["libraries/helpers/src/*"],
+      "@postys/nestjs-libraries/*": ["libraries/nestjs-libraries/src/*"],
+      "@postys/react/*": ["libraries/react-shared-libraries/src/*"],
+      "@postys/plugins/*": ["libraries/plugins/src/*"],
+      "@postys/orchestrator/*": ["apps/orchestrator/src/*"],
+      "@postys/extension/*": ["apps/extension/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
