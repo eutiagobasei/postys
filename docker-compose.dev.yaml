@@ -16,7 +16,7 @@ services:
     volumes:
       - postgres-volume:/var/lib/postgresql/data
     ports:
-      - 5437:5432
+      - 5450:5432
     networks:
       - postys-network
   postys-redis:
@@ -25,7 +25,7 @@ services:
     container_name: postys-redis
     restart: always
     ports:
-      - 6383:6379
+      - 6390:6379
     networks:
       - postys-network
   postys-pg-admin:
@@ -34,7 +34,7 @@ services:
     container_name: postys-pg-admin
     restart: always
     ports:
-      - 8081:80
+      - 8095:80
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
@@ -133,7 +133,7 @@ services:
     networks:
       - temporal-network
     ports:
-      - "8082:8080"
+      - "8090:8080"
 
 volumes:
   redisinsight:

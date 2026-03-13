@@ -16,6 +16,7 @@ import { useFetch } from '@postys/helpers/utils/custom.fetch';
 import useSWR from 'swr';
 import { TopTitle } from '@postys/frontend/components/launches/helpers/top.title.component';
 import './providers/heygen.provider';
+import './providers/designforge.provider';
 import { thirdPartyList } from '@postys/frontend/components/third-parties/third-party.wrapper';
 import { useLaunchStore } from '@postys/frontend/components/new-launch/store';
 import { useModals } from '@postys/frontend/components/layout/new-modal';

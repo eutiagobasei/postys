@@ -38,6 +38,8 @@ import { ApprovedAppsController } from '@postys/backend/api/routes/approved-apps
 import { OAuthController, OAuthAuthorizedController } from '@postys/backend/api/routes/oauth.controller';
 import { AppSumoController } from '@postys/backend/api/routes/appsumo.controller';
 import { AppSumoService } from '@postys/nestjs-libraries/services/appsumo.service';
+import { DesignController } from '@postys/backend/api/routes/design.controller';
+import { DesignModule } from '@postys/nestjs-libraries/design/design.module';
 import { AuthProviderManager } from '@postys/backend/services/auth/providers/providers.manager';
 import { GithubProvider } from '@postys/backend/services/auth/providers/github.provider';
 import { GoogleProvider } from '@postys/backend/services/auth/providers/google.provider';
@@ -64,9 +66,10 @@ const authenticatedController = [
   OAuthAppController,
   ApprovedAppsController,
   OAuthAuthorizedController,
+  DesignController,
 ];
 @Module({
-  imports: [UploadModule],
+  imports: [UploadModule, DesignModule],
   controllers: [
     RootController,
     StripeController,

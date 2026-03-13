@@ -43,6 +43,8 @@ model Organization {
   webhooks          Webhooks[]
   oauthApp          OAuthApp?
   oauthAuthorizations OAuthAuthorization[]
+  designTemplates   DesignTemplate[]
+  designs           Design[]
 
   @@index([apiKey])
   @@index([streakSince])
@@ -942,4 +944,50 @@ enum ShortLinkPreference {
   ASK
   YES
   NO
+}
+
+model DesignTemplate {
+  id             String       @id @default(uuid())
+  name           String
+  description    String?
+  category       String       // quote, promo, announcement, tip, story
+  platform       String       // instagram, twitter, linkedin, facebook, universal
+  html           String       @db.Text
+  css            String       @db.Text
+  variables      Json         // [{name: "title", type: "text", default: ""}]
+  width          Int
+  height         Int
+  thumbnail      String?
+  isPublic       Boolean      @default(true)
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  designs        Design[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([category])
+  @@index([platform])
+  @@index([isPublic])
+  @@index([organizationId])
+}
+
+model Design {
+  id             String          @id @default(uuid())
+  name           String?
+  templateId     String?
+  template       DesignTemplate? @relation(fields: [templateId], references: [id])
+  variables      Json            // Filled variable values
+  renderedUrl    String?         // URL of the final rendered image
+  width          Int
+  height         Int
+  userId         String
+  organizationId String
+  organization   Organization    @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([templateId])
+  @@index([userId])
+  @@index([organizationId])
+  @@index([createdAt])
 }
