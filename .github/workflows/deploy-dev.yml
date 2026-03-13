@@ -1,0 +1,52 @@
+name: Deploy to Development
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST_DEV }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          timeout: 60s
+          command_timeout: 45m
+          script: |
+            set -e
+            echo "=== Deploying postiz-app to DEV ==="
+
+            cd /root/postiz-app || exit 1
+            git fetch origin
+            git checkout develop
+            git pull origin develop
+
+            # Build local image
+            echo "=== Building Docker image ==="
+            docker build -t localhost/postys -f Dockerfile.dev .
+
+            # Start infrastructure services (postgres, redis, temporal)
+            docker compose -f docker-compose.dev.yaml up -d
+
+            # Run the app
+            docker stop postys || true
+            docker rm postys || true
+            docker run -d --name postys \
+              --network postys-network \
+              -p 4200:4200 \
+              -p 3000:3000 \
+              -e DATABASE_URL="postgresql://postys-local:postys-local-pwd@postys-postgres:5432/postys-db-local" \
+              -e REDIS_URL="redis://postys-redis:6379" \
+              -e TEMPORAL_ADDRESS="temporal:7233" \
+              -e JWT_SECRET="postys-dev-jwt-secret-change-in-prod" \
+              -e IS_GENERAL="true" \
+              -e FRONTEND_URL="http://187.77.53.237:4200" \
+              -e NEXT_PUBLIC_BACKEND_URL="http://187.77.53.237:3000" \
+              -e BACKEND_INTERNAL_URL="http://localhost:3000" \
+              localhost/postys
+
+            echo "=== Deploy DEV concluído! ==="
