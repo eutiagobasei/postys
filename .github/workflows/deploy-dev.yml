@@ -23,7 +23,9 @@ jobs:
             cd /root/postiz-app || exit 1
             git fetch origin
             git checkout develop
+            git stash || true
             git pull origin develop
+            git stash pop || true
 
             # Build local image
             echo "=== Building Docker image ==="
