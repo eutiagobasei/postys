@@ -34,6 +34,9 @@ jobs:
             # Start infrastructure services (postgres, redis, temporal)
             docker compose -f docker-compose.dev.yaml up -d
 
+            # Create network if not exists
+            docker network create postys-network 2>/dev/null || true
+
             # Run the app
             docker stop postys || true
             docker rm postys || true
