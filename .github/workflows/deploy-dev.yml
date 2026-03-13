@@ -42,7 +42,15 @@ jobs:
             docker stop postys || true
             docker rm postys || true
             # Stop any service using port 80
-            docker stop $(docker ps -q --filter "publish=80") 2>/dev/null || true
+            echo "=== Stopping containers using port 80 ==="
+            for cid in $(docker ps -q); do
+              if docker port "$cid" 2>/dev/null | grep -q ":80->"; then
+                echo "Stopping container $cid"
+                docker stop "$cid" || true
+              fi
+            done
+            # Also kill any process on port 80
+            fuser -k 80/tcp 2>/dev/null || true
 
             docker run -d --name postys \
               --network "$NETWORK_NAME" \
