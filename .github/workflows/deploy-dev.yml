@@ -42,15 +42,15 @@ jobs:
             docker rm postys || true
             docker run -d --name postys \
               --network postys-network \
-              -p 4200:4200 \
-              -p 3000:3000 \
+              -p 9200:4200 \
+              -p 9100:3000 \
               -e DATABASE_URL="postgresql://postys-local:postys-local-pwd@postys-postgres:5432/postys-db-local" \
               -e REDIS_URL="redis://postys-redis:6379" \
               -e TEMPORAL_ADDRESS="temporal:7233" \
               -e JWT_SECRET="postys-dev-jwt-secret-change-in-prod" \
               -e IS_GENERAL="true" \
-              -e FRONTEND_URL="https://potis.lytos.io" \
-              -e NEXT_PUBLIC_BACKEND_URL="https://potis.lytos.io/api" \
+              -e FRONTEND_URL="http://potis.lytos.io:9200" \
+              -e NEXT_PUBLIC_BACKEND_URL="http://potis.lytos.io:9100" \
               -e BACKEND_INTERNAL_URL="http://localhost:3000" \
               localhost/postys
 
