@@ -49,8 +49,8 @@ jobs:
               -e TEMPORAL_ADDRESS="temporal:7233" \
               -e JWT_SECRET="postys-dev-jwt-secret-change-in-prod" \
               -e IS_GENERAL="true" \
-              -e FRONTEND_URL="http://187.77.53.237:4200" \
-              -e NEXT_PUBLIC_BACKEND_URL="http://187.77.53.237:3000" \
+              -e FRONTEND_URL="https://potis.lytos.io" \
+              -e NEXT_PUBLIC_BACKEND_URL="https://potis.lytos.io/api" \
               -e BACKEND_INTERNAL_URL="http://localhost:3000" \
               localhost/postys
 
