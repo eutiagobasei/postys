@@ -43,7 +43,7 @@ export const DesignGenerator: FC<DesignGeneratorProps> = ({
   // Handle AI generation
   const handleAIGenerate = useCallback(async () => {
     if (!postContent || postContent.length < 10) {
-      toaster.addToast(t('contentTooShort', 'Post content must be at least 10 characters'), 'warning');
+      toaster.show(t('contentTooShort', 'Post content must be at least 10 characters'), 'warning');
       return;
     }
 
@@ -51,7 +51,7 @@ export const DesignGenerator: FC<DesignGeneratorProps> = ({
     if (result) {
       setGeneratedDesign(result);
     } else if (error) {
-      toaster.addToast(error, 'warning');
+      toaster.show(error, 'warning');
     }
   }, [postContent, selectedPlatform, generateDesign, error, toaster, t]);
 
@@ -80,7 +80,7 @@ export const DesignGenerator: FC<DesignGeneratorProps> = ({
       onDesignGenerated(result);
       onClose?.();
     } else if (error) {
-      toaster.addToast(error, 'warning');
+      toaster.show(error, 'warning');
     }
   }, [selectedTemplate, templateVariables, generateFromTemplate, onDesignGenerated, onClose, error, toaster]);
 
