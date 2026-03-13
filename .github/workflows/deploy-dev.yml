@@ -54,4 +54,29 @@ jobs:
               -e BACKEND_INTERNAL_URL="http://localhost:3000" \
               localhost/postys
 
+            # Wait for container to start
+            sleep 5
+
+            # Debug: Check container status
+            echo "=== Container Status ==="
+            docker ps -a | grep postys || echo "Container not found"
+
+            # Debug: Check container logs
+            echo "=== Container Logs (last 30 lines) ==="
+            docker logs postys --tail 30 2>&1 || echo "No logs available"
+
+            # Debug: Check if ports are listening
+            echo "=== Port Status ==="
+            netstat -tlnp 2>/dev/null | grep -E "9200|9100" || ss -tlnp | grep -E "9200|9100" || echo "Ports not listening"
+
+            # Debug: Open firewall ports (if ufw is installed)
+            echo "=== Opening firewall ports ==="
+            ufw allow 9200/tcp 2>/dev/null || echo "UFW not available or already open"
+            ufw allow 9100/tcp 2>/dev/null || echo "UFW not available or already open"
+
+            # Debug: Test local connectivity
+            echo "=== Testing local connectivity ==="
+            curl -s -o /dev/null -w "%{http_code}" http://localhost:9200 || echo "Frontend not responding"
+            curl -s -o /dev/null -w "%{http_code}" http://localhost:9100 || echo "Backend not responding"
+
             echo "=== Deploy DEV concluído! ==="
