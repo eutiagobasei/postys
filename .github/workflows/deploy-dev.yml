@@ -84,8 +84,10 @@ jobs:
 
             # Debug: Open firewall ports (if ufw is installed)
             echo "=== Opening firewall ports ==="
-            ufw allow 80/tcp 2>/dev/null || echo "UFW not available or already open"
-            ufw allow 3000/tcp 2>/dev/null || echo "UFW not available or already open"
+            echo "=== Configuring firewall ==="
+            ufw allow 80/tcp 2>/dev/null || iptables -A INPUT -p tcp --dport 80 -j ACCEPT 2>/dev/null || echo "Firewall config skipped"
+            ufw allow 3000/tcp 2>/dev/null || iptables -A INPUT -p tcp --dport 3000 -j ACCEPT 2>/dev/null || echo "Firewall config skipped"
+            ufw reload 2>/dev/null || true
 
             # Debug: Test local connectivity
             echo "=== Testing local connectivity ==="
