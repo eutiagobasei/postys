@@ -34,14 +34,15 @@ jobs:
             # Start infrastructure services (postgres, redis, temporal)
             docker compose -f docker-compose.dev.yaml up -d
 
-            # Create network if not exists
-            docker network create postys-network 2>/dev/null || true
+            # Get the network name created by docker-compose
+            NETWORK_NAME=$(docker network ls --filter "name=postys-network" --format "{{.Name}}" | head -1)
+            echo "Using network: $NETWORK_NAME"
 
             # Run the app
             docker stop postys || true
             docker rm postys || true
             docker run -d --name postys \
-              --network postys-network \
+              --network "$NETWORK_NAME" \
               -p 9200:4200 \
               -p 9100:3000 \
               -e DATABASE_URL="postgresql://postys-local:postys-local-pwd@postys-postgres:5432/postys-db-local" \
