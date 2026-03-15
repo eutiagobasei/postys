@@ -14,7 +14,7 @@ importers:
     dependencies:
       '@ag-ui/mastra':
         specifier: 1.0.0
-        version: 1.0.0(73319d05b8fadc2b5c2485799bb902d1)
+        version: 1.0.0(bc309e019edcb865747c81af85689610)
       '@ai-sdk/anthropic':
         specifier: ^3.0.58
         version: 3.0.58(zod@3.25.76)
@@ -44,7 +44,7 @@ importers:
         version: 1.10.6(@types/react@18.3.1)(graphql@16.13.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@copilotkit/runtime':
         specifier: 1.10.6
-        version: 1.10.6(4e6f7f670758d338ff9310531237b13c)
+        version: 1.10.6(a653ff8e8af50be130bec0ec696f8ddc)
       '@dub/analytics':
         specifier: ^0.0.32
         version: 0.0.32
@@ -53,7 +53,7 @@ importers:
         version: 3.10.0(react-hook-form@7.71.2(react@18.3.1))
       '@langchain/community':
         specifier: ^0.3.40
-        version: 0.3.59(6d14e4968fec419d16bf13dc2f5b088f)
+        version: 0.3.59(6d5376d7075aa20e40e2c88622608e7f)
       '@langchain/core':
         specifier: ^0.3.44
         version: 0.3.80(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))
@@ -130,8 +130,8 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1(@babel/runtime@7.28.6)(@react-native-async-storage/async-storage@1.24.0(react-native@0.84.1(@babel/core@7.29.0)(@types/react@18.3.1)(bufferutil@4.1.0)(react@18.3.1)(utf-8-validate@5.0.10)))(@solana/web3.js@1.98.4(bufferutil@4.1.0)(typescript@5.5.4)(utf-8-validate@5.0.10))(@types/react@18.3.1)(bs58@6.0.0)(bufferutil@4.1.0)(ioredis@5.10.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4)(utf-8-validate@5.0.10)(zod@3.25.76)
       '@prisma/client':
-        specifier: 6.5.0
-        version: 6.5.0(prisma@6.5.0(typescript@5.5.4))(typescript@5.5.4)
+        specifier: 7.5.0
+        version: 7.5.0(prisma@6.5.0(typescript@5.5.4))(typescript@5.5.4)
       '@sentry/nestjs':
         specifier: ^10.26.0
         version: 10.42.0(@nestjs/common@10.4.22(class-transformer@0.5.1)(class-validator@0.14.4)(reflect-metadata@0.1.14)(rxjs@7.8.2))(@nestjs/core@10.4.22)
@@ -1895,8 +1895,8 @@ packages:
   '@borewit/text-codec@0.2.1':
     resolution: {integrity: sha512-k7vvKPbf7J2fZ5klGRD9AeKfUvojuZIQ3BT5u7Jfv+puwXkUBUT5PVyMDfJZpy30CBDXGMgw7fguK/lpOMBvgw==}
 
-  '@browserbasehq/sdk@2.7.0':
-    resolution: {integrity: sha512-1iwuj3fChplMq+S66M9tGb9ZXA4e7Vi8MjqQQ6/T6rzoAWLGfDnEAPbgTOU479o+Mi3of5/6YXk1oIHKTw0NBw==}
+  '@browserbasehq/sdk@2.8.0':
+    resolution: {integrity: sha512-z4Acpj0IlRLfA95sSr12YCCRZIztEZ1I7sfUk0xGWPIOpEsVaVBc6FPiMaMB5uFG6dji9rThH37XwsCS6txg+A==}
 
   '@browserbasehq/stagehand@1.14.0':
     resolution: {integrity: sha512-Hi/EzgMFWz+FKyepxHTrqfTPjpsuBS4zRy3e9sbMpBgLPv+9c0R+YZEvS7Bw4mTS66QtvvURRT6zgDGFotthVQ==}
@@ -5050,12 +5050,15 @@ packages:
     peerDependencies:
       '@solana/web3.js': ^1.77.3
 
-  '@prisma/client@6.5.0':
-    resolution: {integrity: sha512-M6w1Ql/BeiGoZmhMdAZUXHu5sz5HubyVcKukbLs3l0ELcQb8hTUJxtGEChhv4SVJ0QJlwtLnwOLgIRQhpsm9dw==}
-    engines: {node: '>=18.18'}
+  '@prisma/client-runtime-utils@7.5.0':
+    resolution: {integrity: sha512-KnJ2b4Si/pcWEtK68uM+h0h1oh80CZt2suhLTVuLaSKg4n58Q9jBF/A42Kw6Ma+aThy1yAhfDeTC0JvEmeZnFQ==}
+
+  '@prisma/client@7.5.0':
+    resolution: {integrity: sha512-h4hF9ctp+kSRs7ENHGsFQmHAgHcfkOCxbYt6Ti9Xi8x7D+kP4tTi9x51UKmiTH/OqdyJAO+8V+r+JA5AWdav7w==}
+    engines: {node: ^20.19 || ^22.12 || >=24.0}
     peerDependencies:
       prisma: '*'
-      typescript: '>=5.1.0'
+      typescript: '>=5.4.0'
     peerDependenciesMeta:
       prisma:
         optional: true
@@ -17225,10 +17228,10 @@ snapshots:
       '@ag-ui/core': 0.0.47
       '@ag-ui/proto': 0.0.47
 
-  '@ag-ui/langgraph@0.0.24(@ag-ui/client@0.0.47)(@ag-ui/core@0.0.37)(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@ag-ui/langgraph@0.0.24(@ag-ui/client@0.0.47)(@ag-ui/core@0.0.47)(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ag-ui/client': 0.0.47
-      '@ag-ui/core': 0.0.37
+      '@ag-ui/core': 0.0.47
       '@langchain/core': 0.3.80(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))
       '@langchain/langgraph-sdk': 0.1.10(@langchain/core@0.3.80(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       partial-json: 0.1.7
@@ -17241,12 +17244,12 @@ snapshots:
       - react
       - react-dom
 
-  '@ag-ui/mastra@1.0.0(73319d05b8fadc2b5c2485799bb902d1)':
+  '@ag-ui/mastra@1.0.0(bc309e019edcb865747c81af85689610)':
     dependencies:
       '@ag-ui/client': 0.0.47
-      '@ag-ui/core': 0.0.37
+      '@ag-ui/core': 0.0.47
       '@ai-sdk/ui-utils': 1.2.11(zod@3.25.76)
-      '@copilotkit/runtime': 1.10.6(4e6f7f670758d338ff9310531237b13c)
+      '@copilotkit/runtime': 1.10.6(a653ff8e8af50be130bec0ec696f8ddc)
       '@mastra/client-js': 1.7.3(@cfworker/json-schema@4.1.1)(@standard-community/standard-json@0.3.5(@standard-schema/spec@1.1.0)(@types/json-schema@7.0.15)(quansync@0.2.11)(zod-to-json-schema@3.25.1(zod@3.25.76))(zod@3.25.76))(@standard-community/standard-openapi@0.2.9(@standard-community/standard-json@0.3.5(@standard-schema/spec@1.1.0)(@types/json-schema@7.0.15)(quansync@0.2.11)(zod-to-json-schema@3.25.1(zod@3.25.76))(zod@3.25.76))(@standard-schema/spec@1.1.0)(openapi-types@12.1.3)(zod@3.25.76))(@types/json-schema@7.0.15)(bufferutil@4.1.0)(openapi-types@12.1.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       '@mastra/core': 1.10.0(@cfworker/json-schema@4.1.1)(@standard-community/standard-json@0.3.5(@standard-schema/spec@1.1.0)(@types/json-schema@7.0.15)(quansync@0.2.11)(zod-to-json-schema@3.25.1(zod@3.25.76))(zod@3.25.76))(@standard-community/standard-openapi@0.2.9(@standard-community/standard-json@0.3.5(@standard-schema/spec@1.1.0)(@types/json-schema@7.0.15)(quansync@0.2.11)(zod-to-json-schema@3.25.1(zod@3.25.76))(zod@3.25.76))(@standard-schema/spec@1.1.0)(openapi-types@12.1.3)(zod@3.25.76))(@types/json-schema@7.0.15)(bufferutil@4.1.0)(openapi-types@12.1.3)(utf-8-validate@5.0.10)(zod@3.25.76)
       rxjs: 7.8.1
@@ -18961,7 +18964,7 @@ snapshots:
 
   '@borewit/text-codec@0.2.1': {}
 
-  '@browserbasehq/sdk@2.7.0':
+  '@browserbasehq/sdk@2.8.0':
     dependencies:
       '@types/node': 18.16.9
       '@types/node-fetch': 2.6.13
@@ -18976,7 +18979,7 @@ snapshots:
   '@browserbasehq/stagehand@1.14.0(@playwright/test@1.58.2)(bufferutil@4.1.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))(utf-8-validate@5.0.10)(zod@3.25.76)':
     dependencies:
       '@anthropic-ai/sdk': 0.27.3
-      '@browserbasehq/sdk': 2.7.0
+      '@browserbasehq/sdk': 2.8.0
       '@playwright/test': 1.58.2
       deepmerge: 4.3.1
       dotenv: 16.6.1
@@ -19093,18 +19096,18 @@ snapshots:
       - encoding
       - graphql
 
-  '@copilotkit/runtime@1.10.6(4e6f7f670758d338ff9310531237b13c)':
+  '@copilotkit/runtime@1.10.6(a653ff8e8af50be130bec0ec696f8ddc)':
     dependencies:
       '@ag-ui/client': 0.0.47
-      '@ag-ui/core': 0.0.37
+      '@ag-ui/core': 0.0.47
       '@ag-ui/encoder': 0.0.47
-      '@ag-ui/langgraph': 0.0.24(@ag-ui/client@0.0.47)(@ag-ui/core@0.0.37)(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@ag-ui/langgraph': 0.0.24(@ag-ui/client@0.0.47)(@ag-ui/core@0.0.47)(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@ag-ui/proto': 0.0.47
       '@anthropic-ai/sdk': 0.57.0
       '@copilotkit/shared': 1.10.6
       '@graphql-yoga/plugin-defer-stream': 3.18.1(graphql-yoga@5.18.1(graphql@16.13.1))(graphql@16.13.1)
       '@langchain/aws': 0.1.15(@langchain/core@0.3.80(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76)))
-      '@langchain/community': 0.3.59(bc11f0ac5cbb0bfa97dfe12e68e0ff62)
+      '@langchain/community': 0.3.59(b5a80cc9cb97948e54e405847bcf9cac)
       '@langchain/core': 0.3.80(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@4.104.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))
       '@langchain/google-gauth': 0.1.8(@langchain/core@0.3.80(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76)))(zod@3.25.76)
       '@langchain/langgraph-sdk': 0.0.70(@langchain/core@0.3.80(@opentelemetry/api@1.9.0)(@opentelemetry/exporter-trace-otlp-proto@0.203.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.6.0(@opentelemetry/api@1.9.0))(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76)))(react@18.3.1)
@@ -20373,7 +20376,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@langchain/community@0.3.59(6d14e4968fec419d16bf13dc2f5b088f)':
+  '@langchain/community@0.3.59(6d5376d7075aa20e40e2c88622608e7f)':
     dependencies:
       '@browserbasehq/stagehand': 1.14.0(@playwright/test@1.58.2)(bufferutil@4.1.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))(utf-8-validate@5.0.10)(zod@3.25.76)
       '@ibm-cloud/watsonx-ai': 1.7.9
@@ -20397,7 +20400,7 @@ snapshots:
       '@aws-sdk/client-kendra': 3.1004.0
       '@aws-sdk/client-s3': 3.1004.0
       '@aws-sdk/credential-provider-node': 3.972.18
-      '@browserbasehq/sdk': 2.7.0
+      '@browserbasehq/sdk': 2.8.0
       '@smithy/util-utf8': 2.3.0
       cheerio: 1.2.0
       crypto-js: 4.2.0
@@ -20436,7 +20439,7 @@ snapshots:
       - handlebars
       - peggy
 
-  '@langchain/community@0.3.59(bc11f0ac5cbb0bfa97dfe12e68e0ff62)':
+  '@langchain/community@0.3.59(b5a80cc9cb97948e54e405847bcf9cac)':
     dependencies:
       '@browserbasehq/stagehand': 1.14.0(@playwright/test@1.58.2)(bufferutil@4.1.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.27.0(ws@8.19.0(bufferutil@4.1.0)(utf-8-validate@5.0.10))(zod@3.25.76))(utf-8-validate@5.0.10)(zod@3.25.76)
       '@ibm-cloud/watsonx-ai': 1.7.9
@@ -20460,7 +20463,7 @@ snapshots:
       '@aws-sdk/client-kendra': 3.1004.0
       '@aws-sdk/client-s3': 3.1004.0
       '@aws-sdk/credential-provider-node': 3.972.18
-      '@browserbasehq/sdk': 2.7.0
+      '@browserbasehq/sdk': 2.8.0
       '@smithy/util-utf8': 2.3.0
       cheerio: 1.2.0
       crypto-js: 4.2.0
@@ -22752,7 +22755,11 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@prisma/client@6.5.0(prisma@6.5.0(typescript@5.5.4))(typescript@5.5.4)':
+  '@prisma/client-runtime-utils@7.5.0': {}
+
+  '@prisma/client@7.5.0(prisma@6.5.0(typescript@5.5.4))(typescript@5.5.4)':
+    dependencies:
+      '@prisma/client-runtime-utils': 7.5.0
     optionalDependencies:
       prisma: 6.5.0(typescript@5.5.4)
       typescript: 5.5.4
