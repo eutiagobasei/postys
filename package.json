@@ -237,7 +237,7 @@
     "timezones-list": "^3.1.0",
     "tippy.js": "^6.3.7",
     "tldts": "^6.1.47",
-    "transloadit": "^3.0.2",
+    "transloadit": "^4.7.4",
     "tslib": "^2.3.0",
     "tweetnacl": "^1.0.3",
     "twitter-api-v2": "^1.24.0",
